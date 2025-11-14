@@ -1,15 +1,14 @@
 Hier ist das vollständige **Data Dictionary** der `UnifiedTrainAPI` als GitHub-optimierte Markdown-Tabelle. Du kannst diesen Block direkt in deine `README.md` oder Wiki-Seite kopieren.
 
-# UnifiedTrainAPI Data Dictionary
+# xTrainAPI Data Dictionary
 
 Diese Tabelle beschreibt alle Felder, Parameter und Datentypen, die in der `UnifiedTrainAPI` verwendet werden.
 
 | Kategorie | Feld / Parameter | Datentyp | Beschreibung | Gültiger Bereich / Werte | Anmerkungen |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Core** | `Protocol` | `enum` | Liste aller unterstützten Protokolle. | `DCC`, `MM_I`, `MM_II`, `MFX`, `SELECTRIX`, `SX2`, `LOCONET`, `BIDIB`, `XPRESSNET`, `CAN_GENERIC` | Bestimmt den zu verwendenden Treiber. |
 | **Core** | `LocoHandle.address` | `uint16_t` | Die digitale Adresse des Decoders. | `1` - `10239` (DCC)<br>`1` - `255` (MM)<br>`1` - `127` (SX) | Wird ignoriert, falls `mfxUid` gesetzt ist. |
-| **Core** | `LocoHandle.protocol` | `enum` | Das verwendete Kommunikationsprotokoll. | `DCC`, `MM_I`, `MM_II`, `MFX`, `SELECTRIX`, `SX2`, `LOCONET`, `BIDIB`, `XPRESSNET`, `CAN_GENERIC` | Bestimmt den zu verwendenden Treiber. |
 | **Core** | `LocoHandle.mfxUid` | `uint32_t` | Eindeutige Hardware-ID (UID) für mfx/BiDiB. | `0` = Inaktiv<br>`>0` = Gültige UID | Hat Vorrang vor der Adresse (Routing-Priorität). |
-| **Core** | `Protocol` | `enum` | Liste aller unterstützten Protokolle. | Siehe `LocoHandle.protocol`. | Definiert im `Protocol` Enum. |
 | **Core** | `Direction` | `enum` | Logische Fahrtrichtung. | `REVERSE` (0)<br>`FORWARD` (1)<br>`UNKNOWN` (2) | Genutzt für Befehle und Rückmeldung. |
 | **Traffic** | `speedPercent` | `float` | Zielgeschwindigkeit der Lokomotive. | `0.0` (Stop) bis `100.0` (Vmax) | Muss vom Treiber in Fahrstufen (14/28/128) umgerechnet werden. |
 | **Traffic** | `speedSteps` | `int` | Auflösung der Fahrstufen für den Befehl. | `14`, `28`, `128` | Wichtig für korrekte DCC-Paket-Generierung. |
