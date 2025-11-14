@@ -2,7 +2,7 @@
  * @file UnifiedTrainAPI.h
  * @brief Abstract Interface for a Unified Model Train Control System.
  * @author ModelRail Architecture
- * @version 2.2 (Compact Edition)
+ * @version 2.3 (Extended Sync Edition)
  */
 
 #pragma once
@@ -81,6 +81,20 @@ namespace ModelRail {
         QOS_ERROR_RATE,     ///< Packet error rate / QoS.
         ODOMETER_VALUE,     ///< Total distance travelled (cm/m).
         POSITION_CONFIDENCE ///< Localization confidence (0-100%).
+    };
+
+    // --- Real-Time Synchronization (Added in v2.3) ---
+
+    /** * @brief Types of hardware/mechanical sync events.
+     * Used to couple mechanical movement (Motor/Wheels) with Acoustics (Sound) or Effects.
+     */
+    enum class SyncType : uint8_t {
+        CAM_PULSE,          ///< Wheel rotation pulse (e.g., for steam chuff generation).
+        CYLINDER_CYCLE,     ///< Full cylinder cycle completed.
+        GEAR_CHANGE_UP,     ///< Gearbox shifted up (for diesel/hydraulic transmission).
+        GEAR_CHANGE_DOWN,   ///< Gearbox shifted down.
+        BRAKE_SQUEAL_START, ///< Mechanical brake engaged (triggers squeal sound).
+        DOOR_MOVEMENT       ///< Door opening/closing detected.
     };
 
     // --- Consisting / Management ---
@@ -188,14 +202,14 @@ namespace ModelRail {
         // GROUP C: SYSTEM, TIME & TOPOLOGY
         // -------------------------------------------------------------
 
-        virtual void onTrackPowerChanged(PowerState state)                                              = 0;
+        virtual void onTrackPowerChanged(PowerState state)                                                              = 0;
 
         /**
          * @brief Model Time / Fast Clock (RCN-211).
          * @param modelTimeUnix Unix Timestamp (int64).
          * @param factor Acceleration factor.
          */
-        virtual void onFastClockUpdated(int64_t modelTimeUnix, float factor)                            = 0;
+        virtual void onFastClockUpdated(int64_t modelTimeUnix, float factor)                                            = 0;
 
         /**
          * @brief New Hardware Node Found (BiDiB / LNet).
@@ -247,5 +261,11 @@ namespace ModelRail {
          */
         virtual void onConfigBlockLoaded(const LocoHandle& loco, std::string domain, const std::vector<uint8_t>& data)   = 0;
         virtual void onProgressUpdate(std::string operation, float percent)                                              = 0;
-    };
-}
+
+        // -------------------------------------------------------------
+        // GROUP F: REAL-TIME SYNCHRONIZATION (Added in v2.3)
+        // -------------------------------------------------------------
+
+        /**
+         * @brief Triggered when a mechanical synchronization event occurs.
+         * Critical for "P
