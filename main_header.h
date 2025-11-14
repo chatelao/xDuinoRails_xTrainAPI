@@ -124,7 +124,7 @@ namespace ModelRail {
         // -------------------------------------------------------------
         // GROUP A: TRAFFIC & DISPATCHING
         // -------------------------------------------------------------
-        
+
         /**
          * @brief Standard speed control (RCN-212).
          * @param loco Target locomotive.
@@ -178,7 +178,7 @@ namespace ModelRail {
          * @param aspectId Aspect ID (Hp0, Hp1, etc.).
          */
         virtual void onSignalAspectChanged(uint16_t address, uint8_t aspectId, bool isFeedback)         = 0;
-        
+
         /**
          * @brief Direct analog control (Servos, Dimmers).
          * @param value0to1 Normalized float (0.0 - 1.0).
@@ -215,7 +215,7 @@ namespace ModelRail {
          * @brief New Hardware Node Found (BiDiB / LNet).
          * @param booster True if node supplies power.
          */
-        virtual void onHardwareNodeAttached(std.string nodeUid, std::string productName, bool booster) = 0;
+        virtual void onHardwareNodeAttached(std::string nodeUid, std::string productName, bool booster) = 0;
         virtual void onHardwareNodeLost(std::string nodeUid)                                            = 0;
         virtual void onSystemMessage(std::string source, std::string message)                           = 0;
 
@@ -228,7 +228,7 @@ namespace ModelRail {
          * @param orientation Chimney vs Tender first.
          */
         virtual void onLocoDetectedOnBlock(uint32_t sensorId, const LocoHandle& loco, DecoderOrientation orientation)    = 0;
-        virtual void onLocoTelemetryData(const LocoHandle& loco, TelemetryType type, float value)                        = 0; 
+        virtual void onLocoTelemetryData(const LocoHandle& loco, TelemetryType type, float value)                        = 0;
 
         /**
          * @brief External State Change (ABC / HLU).
@@ -254,7 +254,7 @@ namespace ModelRail {
 
         virtual void onCvReadResult(const LocoHandle& loco, int cvNumber, uint8_t value, bool success)                   = 0;
         virtual void onSusiConfigRead(const LocoHandle& loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value)       = 0;
-        
+
         /**
          * @brief Mass Data Transfer.
          * @param domain Data type (e.g., "ICON", "MFX_CONFIG").
