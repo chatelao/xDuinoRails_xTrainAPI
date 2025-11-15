@@ -26,3 +26,7 @@ When making changes to the API, you **must** follow this workflow:
 3.  **Run validation.** Ensure that the XML and OpenAPI validation checks pass after your changes.
 
 Failure to keep these files consistent will result in build failures and a broken API contract. Always check for deviations from the main `.h` file and correct them.
+
+## File Naming Conventions
+
+Documentation files should be in `UPPER_SNAKE_CASE` (e.g., `DATA_DICTIONARY.md`). Standard files like `README.md`, `AGENTS.md`, and `LICENSE` are exceptions to this rule.
