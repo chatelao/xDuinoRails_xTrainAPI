@@ -1,39 +1,17 @@
-# xDuinoRails Arduino Examples
+# Arduino Examples
 
-This directory contains example Arduino sketches that demonstrate how to use the `xDuinoRails_xTrainAPI`.
+This directory contains a collection of Arduino sketches that demonstrate how to use the xTrainAPI with various model train control libraries.
 
 ## Examples
 
-* **debug_cli**: A simple command-line interface that allows you to send DCC-EX like commands to control a model train layout. This sketch acts as the test target.
-* **print_monitor**: A sketch that demonstrates how to implement the `IUnifiedModelTrainListener` to receive events from the `xDuinoRails_xTrainAPI` and print them to the serial port in a DCC-EX like command format. This sketch acts as the test driver.
+### NmraDcc_monitor
 
-## Command Syntax
+This example demonstrates how to use the `NmraDcc` library to monitor DCC commands on the track and translate them into `xTrainAPI` events. The events are then printed to the serial port in a human-readable format.
 
-The debug CLI uses a command syntax similar to DCC-EX. Each command is enclosed in `<` and `>` brackets.
+### MotorolaMaerklin_monitor
 
-| Command | Description | Example |
-| --- | --- | --- |
-| `<1>` | Turn track power on | `<1>` |
-| `<0>` | Turn track power off | `<0>` |
-| `<t CAB SPEED DIR>` | Set locomotive speed | `<t 123 100 1>` |
-| `<f CAB FUNC STATE>` | Set locomotive function | `<f 123 1 1>` |
-| `<T ADDR STATE>` | Set turnout state | `<T 456 1>` |
-| `<S ADDR ASPECT>` | Set signal aspect | `<S 789 3>` |
+This example is a **non-functional placeholder** that demonstrates how to use the `laserlight/MotorolaMaerklin` library to monitor Motorola/Maerklin commands. The sketch will not compile without the `MotorolaMaerklin` library installed. It is intended to serve as a template for users who have access to this library.
 
-## End-to-End Testing
+## Usage
 
-These examples are designed to be used together for end-to-end testing. The `print_monitor` sketch can be used to generate a command stream that can be piped to the `debug_cli` sketch. The output of the `debug_cli` sketch can then be compared to the original test data to verify that the commands are being parsed and handled correctly.
-
-### Test Data
-
-The `testdata` directory contains test data files that can be used for testing. Each file contains a sequence of commands that will be executed by the `print_monitor` sketch.
-
-* `test_set_1.txt`
-* `test_set_2.txt`
-
-### Usage
-
-1.  **Configure `print_monitor`:** Open `print_monitor.ino` and change the `TEST_SET` macro to the desired test set (1 or 2).
-2.  **Upload Sketches:** Upload the `print_monitor` sketch to one Arduino and the `debug_cli` sketch to another.
-3.  **Connect Arduinos:** Connect the TX pin of the `print_monitor` Arduino to the RX pin of the `debug_cli` Arduino. Also connect the grounds of the two boards.
-4.  **Verify Output:** Open the Serial Monitor for the `debug_cli` Arduino. The output should be a series of API call logs. Compare this output to the commands in the corresponding test data file to verify that the commands were received and parsed correctly.
+To use these examples, you will need to have the required libraries installed in your Arduino environment. You can install them from the Arduino Library Manager. Once the libraries are installed, you can open the sketches in the Arduino IDE, compile them, and upload them to your Arduino board.
