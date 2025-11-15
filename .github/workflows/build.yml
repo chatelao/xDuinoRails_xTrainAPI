@@ -42,7 +42,7 @@ jobs:
           else
             BUILD_PROPERTIES="--build-property build.extra_flags=-DUSE_EXTENDED_CLI_SYNTAX=0"
           fi
-          arduino-cli compile --fqbn ${{ matrix.fqbn }} $BUILD_PROPERTIES arduino_examples/${{ matrix.example }} --output-dir build/${{ matrix.example }}-${{ matrix.fqbn }}-${{ matrix.cli_syntax }}
+          arduino-cli compile --fqbn ${{ matrix.fqbn }} --library lib $BUILD_PROPERTIES arduino_examples/${{ matrix.example }} --output-dir build/${{ matrix.example }}-${{ matrix.fqbn }}-${{ matrix.cli_syntax }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -59,7 +59,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libxml2-utils
       - name: Validate XML files
-        run: xmllint --noout --schema arduino_examples/xml_messages/xTrainEvents.xsd arduino_examples/xml_messages/*.xml
+        run: xmllint --noout --schema xml/xTrainEvents.xsd xml/*.xml
 
   validate-swagger:
     runs-on: ubuntu-latest
