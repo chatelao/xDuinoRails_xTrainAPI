@@ -1,0 +1,59 @@
+name: Build Arduino Examples
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [created]
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      examples: ${{ steps.discover.outputs.examples }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - id: discover
+        run: |
+          EXAMPLES=$(find arduino_examples -mindepth 1 -maxdepth 1 -type d ! -name 'testdata' -exec basename {} \; | jq -R . | jq -s .)
+          echo "::set-output name=examples::$EXAMPLES"
+  build:
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example: ${{ fromJson(needs.discover.outputs.examples) }}
+        fqbn: [arduino:avr:uno, arduino:mbed_rp2040:pico]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+      - name: Install platforms
+        run: |
+          arduino-cli core install arduino:avr
+          arduino-cli core install arduino:mbed_rp2040
+      - name: Compile sketch
+        run: |
+          arduino-cli compile --fqbn ${{ matrix.fqbn }} arduino_examples/${{ matrix.example }} --output-dir build/${{ matrix.example }}-${{ matrix.fqbn }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.example }}-${{ matrix.fqbn }}
+          path: build/${{ matrix.example }}-${{ matrix.fqbn }}
+
+  release:
+    needs: build
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+      - name: Upload to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/*/*.uf2
