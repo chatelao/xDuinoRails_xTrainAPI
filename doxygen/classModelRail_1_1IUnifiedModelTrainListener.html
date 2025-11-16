@@ -175,15 +175,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a798c51f21e52e7b3e47069363c95cb02" id="r_a798c51f21e52e7b3e47069363c95cb02"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a798c51f21e52e7b3e47069363c95cb02">onNewLocoDiscovered</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, const std::string &amp;name, const std::string &amp;icon)=0</td></tr>
 <tr class="memdesc:a798c51f21e52e7b3e47069363c95cb02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discovery (mfx / RailComPlus).  <br /></td></tr>
 <tr class="separator:a798c51f21e52e7b3e47069363c95cb02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88af9adfeb222cda84b0dfc70071e86a" id="r_a88af9adfeb222cda84b0dfc70071e86a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a88af9adfeb222cda84b0dfc70071e86a">onCvReadRequest</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int cvNumber)=0</td></tr>
-<tr class="memdesc:a88af9adfeb222cda84b0dfc70071e86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A request to read a CV from a decoder has been issued.  <br /></td></tr>
-<tr class="separator:a88af9adfeb222cda84b0dfc70071e86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf256f59cb4c04729027f1a2a65f08e2" id="r_adf256f59cb4c04729027f1a2a65f08e2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#adf256f59cb4c04729027f1a2a65f08e2">onCvWriteRequest</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int cvNumber, uint8_t value)=0</td></tr>
-<tr class="memdesc:adf256f59cb4c04729027f1a2a65f08e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A request to write a CV to a decoder has been issued.  <br /></td></tr>
-<tr class="separator:adf256f59cb4c04729027f1a2a65f08e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a886c1fe80763edb28cc7f7f8e7866922" id="r_a886c1fe80763edb28cc7f7f8e7866922"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a886c1fe80763edb28cc7f7f8e7866922">onCvReadResult</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int cvNumber, uint8_t value, bool success)=0</td></tr>
-<tr class="memdesc:a886c1fe80763edb28cc7f7f8e7866922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of a CV read operation.  <br /></td></tr>
-<tr class="separator:a886c1fe80763edb28cc7f7f8e7866922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a083c9c73d64f73536744824e518ec652" id="r_a083c9c73d64f73536744824e518ec652"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a083c9c73d64f73536744824e518ec652">onCvRead</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int cvNumber)=0</td></tr>
+<tr class="memdesc:a083c9c73d64f73536744824e518ec652"><td class="mdescLeft">&#160;</td><td class="mdescRight">A request to read a CV from a decoder has been issued.  <br /></td></tr>
+<tr class="separator:a083c9c73d64f73536744824e518ec652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fd4a2b64707c2d50b848be7e4c897aa" id="r_a3fd4a2b64707c2d50b848be7e4c897aa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a3fd4a2b64707c2d50b848be7e4c897aa">onCvWrite</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int cvNumber, uint8_t value)=0</td></tr>
+<tr class="memdesc:a3fd4a2b64707c2d50b848be7e4c897aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">A request to write a CV to a decoder has been issued.  <br /></td></tr>
+<tr class="separator:a3fd4a2b64707c2d50b848be7e4c897aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e92790d3ef74cf085ca305c8d174d7" id="r_a79e92790d3ef74cf085ca305c8d174d7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a79e92790d3ef74cf085ca305c8d174d7">onCvReadDone</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int cvNumber, uint8_t value, bool success)=0</td></tr>
+<tr class="memdesc:a79e92790d3ef74cf085ca305c8d174d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of a CV read operation.  <br /></td></tr>
+<tr class="separator:a79e92790d3ef74cf085ca305c8d174d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21ddf33ec30b1d0d4c5772b2ca341631" id="r_a21ddf33ec30b1d0d4c5772b2ca341631"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a21ddf33ec30b1d0d4c5772b2ca341631">onSusiConfigRead</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value)=0</td></tr>
 <tr class="memdesc:a21ddf33ec30b1d0d4c5772b2ca341631"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of reading a SUSI configuration register.  <br /></td></tr>
 <tr class="separator:a21ddf33ec30b1d0d4c5772b2ca341631"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -472,8 +472,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a88af9adfeb222cda84b0dfc70071e86a" name="a88af9adfeb222cda84b0dfc70071e86a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88af9adfeb222cda84b0dfc70071e86a">&#9670;&#160;</a></span>onCvReadRequest()</h2>
+<a id="a083c9c73d64f73536744824e518ec652" name="a083c9c73d64f73536744824e518ec652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a083c9c73d64f73536744824e518ec652">&#9670;&#160;</a></span>onCvRead()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -482,7 +482,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ModelRail::IUnifiedModelTrainListener::onCvReadRequest </td>
+          <td class="memname">virtual void ModelRail::IUnifiedModelTrainListener::onCvRead </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -515,12 +515,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a94f62af084f2c21f175916124b6872ab">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#abf22d51ca756ad6a2c655ddc2a923536">ModelRail::XmlPrinter</a>.</p>
+<p>Implemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a1ad8894a73b0346a3a9c313c79739b8a">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#ab398c248f2e938b6d7c7f4400e33d03a">ModelRail::XmlPrinter</a>.</p>
 
 </div>
 </div>
-<a id="a886c1fe80763edb28cc7f7f8e7866922" name="a886c1fe80763edb28cc7f7f8e7866922"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a886c1fe80763edb28cc7f7f8e7866922">&#9670;&#160;</a></span>onCvReadResult()</h2>
+<a id="a79e92790d3ef74cf085ca305c8d174d7" name="a79e92790d3ef74cf085ca305c8d174d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79e92790d3ef74cf085ca305c8d174d7">&#9670;&#160;</a></span>onCvReadDone()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,7 +529,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ModelRail::IUnifiedModelTrainListener::onCvReadResult </td>
+          <td class="memname">virtual void ModelRail::IUnifiedModelTrainListener::onCvReadDone </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -576,12 +576,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a5a2138d2791496200f5bb2d11f248fa4">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#afc21c4b8baa67787f773ed45676be7aa">ModelRail::XmlPrinter</a>.</p>
+<p>Implemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a6b6f0008376fea1210933835e901150c">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#af992eed5ca4126f38a5a3e1c1997a8ce">ModelRail::XmlPrinter</a>.</p>
 
 </div>
 </div>
-<a id="adf256f59cb4c04729027f1a2a65f08e2" name="adf256f59cb4c04729027f1a2a65f08e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf256f59cb4c04729027f1a2a65f08e2">&#9670;&#160;</a></span>onCvWriteRequest()</h2>
+<a id="a3fd4a2b64707c2d50b848be7e4c897aa" name="a3fd4a2b64707c2d50b848be7e4c897aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fd4a2b64707c2d50b848be7e4c897aa">&#9670;&#160;</a></span>onCvWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -590,7 +590,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ModelRail::IUnifiedModelTrainListener::onCvWriteRequest </td>
+          <td class="memname">virtual void ModelRail::IUnifiedModelTrainListener::onCvWrite </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -630,7 +630,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a4493a03532d2644461fbb5f71aec8ecc">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#ab2d2ba3551984358ee2fbed70e5c1d07">ModelRail::XmlPrinter</a>.</p>
+<p>Implemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a2cbdda867c2eec935d014f5387c0fea4">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a571a362548aa244d2af8aeca1c03c81e">ModelRail::XmlPrinter</a>.</p>
 
 </div>
 </div>
@@ -1646,7 +1646,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceModelRail.html">ModelRail</a></li><li class="navelem"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html">IUnifiedModelTrainListener</a></li>
-    <li class="footer">Generated on Sun Nov 16 2025 14:36:13 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sun Nov 16 2025 20:11:53 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
