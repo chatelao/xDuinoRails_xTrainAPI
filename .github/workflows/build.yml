@@ -110,6 +110,8 @@ jobs:
     # must be configured to serve from the 'gh-pages' branch.
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
