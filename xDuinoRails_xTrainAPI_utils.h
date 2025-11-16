@@ -121,8 +121,34 @@ public:
     void onSusiConfigRead(const LocoHandle& loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value) override {}
     void onConfigBlockLoaded(const LocoHandle& loco, std::string domain, const std::vector<uint8_t>& data) override {}
     void onProgressUpdate(std::string operation, float percent) override {}
-        // GROUP F: REAL-TIME SYNCHRONIZATION (Added in v2.3)
-    void onMechanicalSyncEvent(const LocoHandle& loco, SyncType type, uint8_t value) override {}
+
+    // GROUP F: REAL-TIME SYNCHRONIZATION (Added in v2.3)
+    void onMechanicalSyncEvent(const LocoHandle& loco, SyncType type, uint8_t value) override {
+#if USE_EXTENDED_CLI_SYNTAX
+        _stream->print("<MECH_SYNC cab=\"");
+        _stream->print(loco.address);
+        _stream->print("\" type=\"");
+        switch (type) {
+            case SyncType::CAM_PULSE: _stream->print("CAM_PULSE"); break;
+            case SyncType::CYLINDER_CYCLE: _stream->print("CYLINDER_CYCLE"); break;
+            case SyncType::GEAR_CHANGE_UP: _stream->print("GEAR_CHANGE_UP"); break;
+            case SyncType::GEAR_CHANGE_DOWN: _stream->print("GEAR_CHANGE_DOWN"); break;
+            case SyncType::BRAKE_SQUEAL_START: _stream->print("BRAKE_SQUEAL_START"); break;
+            case SyncType::DOOR_MOVEMENT: _stream->print("DOOR_MOVEMENT"); break;
+        }
+        _stream->print("\" value=\"");
+        _stream->print(value);
+        _stream->println("\">");
+#else
+        _stream->print("<m ");
+        _stream->print(loco.address);
+        _stream->print(" ");
+        _stream->print(static_cast<uint8_t>(type));
+        _stream->print(" ");
+        _stream->print(value);
+        _stream->println(">");
+#endif
+    }
 
 private:
     Stream* _stream;
@@ -177,7 +203,30 @@ public:
     void onSusiConfigRead(const LocoHandle& loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value) override {}
     void onConfigBlockLoaded(const LocoHandle& loco, std::string domain, const std::vector<uint8_t>& data) override {}
     void onProgressUpdate(std::string operation, float percent) override {}
-    void onMechanicalSyncEvent(const LocoHandle& loco, SyncType type, uint8_t value) override {}
+    void onMechanicalSyncEvent(const LocoHandle& loco, SyncType type, uint8_t value) override {
+        _stream->println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        _stream->println("<xTrainEvents>");
+        _stream->println("    <event type=\"onMechanicalSyncEvent\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"DCC\" mfxUid=\"");
+        _stream->print(loco.mfxUid);
+        _stream->println("\" />");
+        _stream->print("        <sync type=\"");
+        switch (type) {
+            case SyncType::CAM_PULSE: _stream->print("CAM_PULSE"); break;
+            case SyncType::CYLINDER_CYCLE: _stream->print("CYLINDER_CYCLE"); break;
+            case SyncType::GEAR_CHANGE_UP: _stream->print("GEAR_CHANGE_UP"); break;
+            case SyncType::GEAR_CHANGE_DOWN: _stream->print("GEAR_CHANGE_DOWN"); break;
+            case SyncType::BRAKE_SQUEAL_START: _stream->print("BRAKE_SQUEAL_START"); break;
+            case SyncType::DOOR_MOVEMENT: _stream->print("DOOR_MOVEMENT"); break;
+        }
+        _stream->print("\" value=\"");
+        _stream->print(value);
+        _stream->println("\" />");
+        _stream->println("    </event>");
+        _stream->println("</xTrainEvents>");
+    }
 
 private:
     Stream* _stream;
@@ -294,6 +343,21 @@ public:
             int aspect = getParamValue(params, "aspect").toInt();
             _listener->onSignalAspectChanged(addr, aspect, false);
             return;
+        } else if (cmd == "MECH_SYNC") {
+            uint16_t cab = getParamValue(params, "cab").toInt();
+            String typeStr = getParamValue(params, "type");
+            uint8_t value = getParamValue(params, "value").toInt();
+            SyncType type;
+            if (typeStr == "CAM_PULSE") type = SyncType::CAM_PULSE;
+            else if (typeStr == "CYLINDER_CYCLE") type = SyncType::CYLINDER_CYCLE;
+            else if (typeStr == "GEAR_CHANGE_UP") type = SyncType::GEAR_CHANGE_UP;
+            else if (typeStr == "GEAR_CHANGE_DOWN") type = SyncType::GEAR_CHANGE_DOWN;
+            else if (typeStr == "BRAKE_SQUEAL_START") type = SyncType::BRAKE_SQUEAL_START;
+            else if (typeStr == "DOOR_MOVEMENT") type = SyncType::DOOR_MOVEMENT;
+
+            LocoHandle loco = {cab, Protocol::DCC, 0};
+            _listener->onMechanicalSyncEvent(loco, type, value);
+            return;
         }
 
         // If not an extended command, try parsing legacy format
@@ -353,6 +417,20 @@ public:
                         uint16_t addr = params.substring(0, firstSpace).toInt();
                         int aspect = params.substring(firstSpace + 1).toInt();
                         _listener->onSignalAspectChanged(addr, aspect, false);
+                    }
+                }
+                break;
+            case 'm':
+                {
+                    int firstSpace = params.indexOf(' ');
+                    int secondSpace = params.indexOf(' ', firstSpace + 1);
+                    if (firstSpace != -1 && secondSpace != -1) {
+                        uint16_t cab = params.substring(0, firstSpace).toInt();
+                        int type = params.substring(firstSpace + 1, secondSpace).toInt();
+                        int value = params.substring(secondSpace + 1).toInt();
+
+                        LocoHandle loco = {cab, Protocol::DCC, 0};
+                        _listener->onMechanicalSyncEvent(loco, (SyncType)type, value);
                     }
                 }
                 break;
