@@ -270,4 +270,11 @@ namespace ModelRail {
 
         /**
          * @brief Triggered when a mechanical synchronization event occurs.
-         * Critical for "P
+         * Critical for "Puff-Chuff" sync (Steam) or Gear Changes (Diesel).
+         * @param loco The locomotive handle.
+         * @param type The type of mechanical event (e.g., CAM_PULSE).
+         * @param value An optional value (e.g., new gear number).
+         */
+        virtual void onLocoSyncEvent(const LocoHandle& loco, SyncType type, uint32_t value) = 0;
+    };
+}
