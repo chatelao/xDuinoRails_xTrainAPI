@@ -160,6 +160,11 @@ namespace ModelRail {
          * @param inverted True if slave is reversed relative to master.
          */
         virtual void onConsistLink(const LocoHandle& master, const LocoHandle& slave, ConsistType type, bool inverted)   = 0;
+
+        /**
+         * @brief Dissolve a multi-traction link.
+         * @param slave The locomotive being removed from the consist.
+         */
         virtual void onConsistUnlink(const LocoHandle& slave)                                                            = 0;
 
         // -------------------------------------------------------------
@@ -202,6 +207,10 @@ namespace ModelRail {
         // GROUP C: SYSTEM, TIME & TOPOLOGY
         // -------------------------------------------------------------
 
+        /**
+         * @brief Report global track power status change.
+         * @param state The new power state (ON, OFF, EMERGENCY_STOP).
+         */
         virtual void onTrackPowerChanged(PowerState state)                                                              = 0;
 
         /**
@@ -216,7 +225,18 @@ namespace ModelRail {
          * @param booster True if node supplies power.
          */
         virtual void onHardwareNodeAttached(std::string nodeUid, std::string productName, bool booster) = 0;
+
+        /**
+         * @brief A hardware node has disconnected from the bus.
+         * @param nodeUid Unique identifier of the lost node.
+         */
         virtual void onHardwareNodeLost(std::string nodeUid)                                            = 0;
+
+        /**
+         * @brief Generic system message or log entry.
+         * @param source The component originating the message (e.g., "PowerManager", "BiDiB-Stack").
+         * @param message The content of the message.
+         */
         virtual void onSystemMessage(std::string source, std::string message)                           = 0;
 
         // -------------------------------------------------------------
@@ -252,9 +272,37 @@ namespace ModelRail {
         // GROUP E: CONFIGURATION & MASS DATA
         // -------------------------------------------------------------
 
+        /**
+         * @brief A request to read a CV from a decoder has been issued.
+         * @param loco The target locomotive.
+         * @param cvNumber The Configuration Variable number to read.
+         */
         virtual void onCvReadRequest(const LocoHandle& loco, int cvNumber)                                               = 0;
+
+        /**
+         * @brief A request to write a CV to a decoder has been issued.
+         * @param loco The target locomotive.
+         * @param cvNumber The Configuration Variable number to write.
+         * @param value The 8-bit value to write.
+         */
         virtual void onCvWriteRequest(const LocoHandle& loco, int cvNumber, uint8_t value)                                = 0;
+
+        /**
+         * @brief Result of a CV read operation.
+         * @param loco The target locomotive.
+         * @param cvNumber The CV that was read.
+         * @param value The 8-bit value returned by the decoder.
+         * @param success True if the read was successful (acknowledged).
+         */
         virtual void onCvReadResult(const LocoHandle& loco, int cvNumber, uint8_t value, bool success)                   = 0;
+
+        /**
+         * @brief Result of reading a SUSI configuration register.
+         * @param loco The target locomotive.
+         * @param bankIndex The memory bank (e.g., for different sound profiles).
+         * @param susiIndex The specific SUSI register index.
+         * @param value The value read from the register.
+         */
         virtual void onSusiConfigRead(const LocoHandle& loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value)       = 0;
         
         /**
@@ -262,6 +310,12 @@ namespace ModelRail {
          * @param domain Data type (e.g., "ICON", "MFX_CONFIG").
          */
         virtual void onConfigBlockLoaded(const LocoHandle& loco, std::string domain, const std::vector<uint8_t>& data)   = 0;
+
+        /**
+         * @brief Feedback on the progress of a long-running operation.
+         * @param operation A string identifying the task (e.g., "CV_READ_ALL", "FIRMWARE_UPDATE").
+         * @param percent The progress from 0.0 to 100.0.
+         */
         virtual void onProgressUpdate(std::string operation, float percent)                                              = 0;
 
         // -------------------------------------------------------------

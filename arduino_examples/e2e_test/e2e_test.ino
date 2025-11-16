@@ -55,10 +55,17 @@ public:
         ModelRail::Direction direction;
     };
 
+    struct ExpectedMechanicalSyncEvent {
+        uint16_t address;
+        ModelRail::SyncType type;
+        uint8_t value;
+    };
+
     using ExpectedCall = std::variant<
         std::monostate,
         ExpectedTrackPowerChanged,
-        ExpectedLocoSpeedChanged
+        ExpectedLocoSpeedChanged,
+        ExpectedMechanicalSyncEvent
     >;
 
     VerifyingListener() : _testPassed(false) {}
@@ -114,7 +121,15 @@ public:
     void onSusiConfigRead(const ModelRail::LocoHandle& loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value) override {}
     void onConfigBlockLoaded(const ModelRail::LocoHandle& loco, std::string domain, const std::vector<uint8_t>& data) override {}
     void onProgressUpdate(std::string operation, float percent) override {}
-    void onMechanicalSyncEvent(const ModelRail::LocoHandle& loco, ModelRail::SyncType type, uint8_t value) override {}
+    void onMechanicalSyncEvent(const ModelRail::LocoHandle& loco, ModelRail::SyncType type, uint8_t value) override {
+        if (auto* expected = std::get_if<ExpectedMechanicalSyncEvent>(&_expected)) {
+            if (expected->address == loco.address &&
+                expected->type == type &&
+                expected->value == value) {
+                _testPassed = true;
+            }
+        }
+    }
 
 private:
     ExpectedCall _expected;
@@ -150,6 +165,16 @@ void setup() {
     command = command.substring(1);
     parser.parse(command);
     Serial.print("Test onLocoSpeedChanged: ");
+    Serial.println(listener.hasPassed() ? "PASSED" : "FAILED");
+
+    // Test 3: onMechanicalSyncEvent
+    stream.clear();
+    listener.setExpected(VerifyingListener::ExpectedMechanicalSyncEvent{123, ModelRail::SyncType::CAM_PULSE, 1});
+    printer.onMechanicalSyncEvent(loco, ModelRail::SyncType::CAM_PULSE, 1);
+    command = stream.readStringUntil('>');
+    command = command.substring(1);
+    parser.parse(command);
+    Serial.print("Test onMechanicalSyncEvent: ");
     Serial.println(listener.hasPassed() ? "PASSED" : "FAILED");
 }
 
