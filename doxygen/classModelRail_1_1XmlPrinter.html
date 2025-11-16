@@ -112,42 +112,42 @@ Inheritance diagram for ModelRail::XmlPrinter:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad040838fe44d9a628f4a58b67f70b815" id="r_ad040838fe44d9a628f4a58b67f70b815"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#ad040838fe44d9a628f4a58b67f70b815">XmlPrinter</a> (Stream &amp;stream)</td></tr>
 <tr class="separator:ad040838fe44d9a628f4a58b67f70b815"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa85e8ee423f757b2d8c0664e6745adfa" id="r_aa85e8ee423f757b2d8c0664e6745adfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#aa85e8ee423f757b2d8c0664e6745adfa">onLocoSpeedChanged</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, float speedPercent, <a class="el" href="namespaceModelRail.html#afe98c6614d10e85614d309d919327cf6">Direction</a> direction, int speedSteps) override</td></tr>
-<tr class="memdesc:aa85e8ee423f757b2d8c0664e6745adfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard speed control (RCN-212).  <br /></td></tr>
-<tr class="separator:aa85e8ee423f757b2d8c0664e6745adfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13d033c8dd50b089807d77cf78cf001c" id="r_a13d033c8dd50b089807d77cf78cf001c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a13d033c8dd50b089807d77cf78cf001c">onLocoFunctionChanged</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int fIndex, bool isActive) override</td></tr>
-<tr class="memdesc:a13d033c8dd50b089807d77cf78cf001c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary function control (F0-F68+).  <br /></td></tr>
-<tr class="separator:a13d033c8dd50b089807d77cf78cf001c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09859d5d7a94f5347cdc6de0526422c7" id="r_a09859d5d7a94f5347cdc6de0526422c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a09859d5d7a94f5347cdc6de0526422c7">onLocoFunctionAnalogValue</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int fIndex, uint8_t value) override</td></tr>
-<tr class="memdesc:a09859d5d7a94f5347cdc6de0526422c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analog function value (Pressure-sensitive / Analog features).  <br /></td></tr>
-<tr class="separator:a09859d5d7a94f5347cdc6de0526422c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ab80f2e8590c9d4538f2511d928f0ad" id="r_a7ab80f2e8590c9d4538f2511d928f0ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a7ab80f2e8590c9d4538f2511d928f0ad">onLocoDispatchStateChanged</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, bool isAcquired, std::string ownerId) override</td></tr>
-<tr class="memdesc:a7ab80f2e8590c9d4538f2511d928f0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot Management (LocoNet/XpressNet).  <br /></td></tr>
-<tr class="separator:a7ab80f2e8590c9d4538f2511d928f0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1561e347cde1179895604f91ec142f6" id="r_ac1561e347cde1179895604f91ec142f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#ac1561e347cde1179895604f91ec142f6">onLocoSpeedChange</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, float speedPercent, <a class="el" href="namespaceModelRail.html#afe98c6614d10e85614d309d919327cf6">Direction</a> direction, int speedSteps) override</td></tr>
+<tr class="memdesc:ac1561e347cde1179895604f91ec142f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard speed control (RCN-212).  <br /></td></tr>
+<tr class="separator:ac1561e347cde1179895604f91ec142f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439338fc3e8b7d7d8d23f3a0ea46b6e0" id="r_a439338fc3e8b7d7d8d23f3a0ea46b6e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a439338fc3e8b7d7d8d23f3a0ea46b6e0">onLocoFunctionChange</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int fIndex, bool isActive) override</td></tr>
+<tr class="memdesc:a439338fc3e8b7d7d8d23f3a0ea46b6e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary function control (F0-F68+).  <br /></td></tr>
+<tr class="separator:a439338fc3e8b7d7d8d23f3a0ea46b6e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade395f381e12795e11c7456dbc9b97b9" id="r_ade395f381e12795e11c7456dbc9b97b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#ade395f381e12795e11c7456dbc9b97b9">onLocoFunctionAnalogChange</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int fIndex, uint8_t value) override</td></tr>
+<tr class="memdesc:ade395f381e12795e11c7456dbc9b97b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analog function value (Pressure-sensitive / Analog features).  <br /></td></tr>
+<tr class="separator:ade395f381e12795e11c7456dbc9b97b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfcd7b34e0c982bf95432d9ebd02c0c1" id="r_abfcd7b34e0c982bf95432d9ebd02c0c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#abfcd7b34e0c982bf95432d9ebd02c0c1">onLocoDispatchStateChange</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, bool isAcquired, std::string ownerId) override</td></tr>
+<tr class="memdesc:abfcd7b34e0c982bf95432d9ebd02c0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot Management (LocoNet/XpressNet).  <br /></td></tr>
+<tr class="separator:abfcd7b34e0c982bf95432d9ebd02c0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76f7b89c31a20e64a068c24ef644af56" id="r_a76f7b89c31a20e64a068c24ef644af56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a76f7b89c31a20e64a068c24ef644af56">onConsistLink</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;master, const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;slave, <a class="el" href="namespaceModelRail.html#aecda06d1a716e3e2a318ca168a8d8e2c">ConsistType</a> type, bool inverted) override</td></tr>
 <tr class="memdesc:a76f7b89c31a20e64a068c24ef644af56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consist Linking report.  <br /></td></tr>
 <tr class="separator:a76f7b89c31a20e64a068c24ef644af56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef6a4e83eaa2807789b430fdf67b8fec" id="r_aef6a4e83eaa2807789b430fdf67b8fec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#aef6a4e83eaa2807789b430fdf67b8fec">onConsistUnlink</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;slave) override</td></tr>
 <tr class="memdesc:aef6a4e83eaa2807789b430fdf67b8fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dissolve a multi-traction link.  <br /></td></tr>
 <tr class="separator:aef6a4e83eaa2807789b430fdf67b8fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8f71f79f67ddf731d84035dd261cf8c" id="r_af8f71f79f67ddf731d84035dd261cf8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#af8f71f79f67ddf731d84035dd261cf8c">onTurnoutChanged</a> (uint16_t address, bool isThrown, bool isFeedback) override</td></tr>
-<tr class="memdesc:af8f71f79f67ddf731d84035dd261cf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard Turnout (Binary).  <br /></td></tr>
-<tr class="separator:af8f71f79f67ddf731d84035dd261cf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c199fc3b17354d5a569779d7f72e16f" id="r_a2c199fc3b17354d5a569779d7f72e16f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a2c199fc3b17354d5a569779d7f72e16f">onSignalAspectChanged</a> (uint16_t address, uint8_t aspectId, bool isFeedback) override</td></tr>
-<tr class="memdesc:a2c199fc3b17354d5a569779d7f72e16f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extended Signal Aspects (0-255).  <br /></td></tr>
-<tr class="separator:a2c199fc3b17354d5a569779d7f72e16f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa7919988f738987c5aa34b2b8a97bd" id="r_aefa7919988f738987c5aa34b2b8a97bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#aefa7919988f738987c5aa34b2b8a97bd">onTurnoutChange</a> (uint16_t address, bool isThrown, bool isFeedback) override</td></tr>
+<tr class="memdesc:aefa7919988f738987c5aa34b2b8a97bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard Turnout (Binary).  <br /></td></tr>
+<tr class="separator:aefa7919988f738987c5aa34b2b8a97bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0c8583ce4f0b1346349062346c3ec89" id="r_ac0c8583ce4f0b1346349062346c3ec89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#ac0c8583ce4f0b1346349062346c3ec89">onSignalAspectChange</a> (uint16_t address, uint8_t aspectId, bool isFeedback) override</td></tr>
+<tr class="memdesc:ac0c8583ce4f0b1346349062346c3ec89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extended Signal Aspects (0-255).  <br /></td></tr>
+<tr class="separator:ac0c8583ce4f0b1346349062346c3ec89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c5e237fccfaa08e5b30caac340072a2" id="r_a3c5e237fccfaa08e5b30caac340072a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a3c5e237fccfaa08e5b30caac340072a2">onAccessoryAnalogValue</a> (uint16_t address, float value0to1) override</td></tr>
 <tr class="memdesc:a3c5e237fccfaa08e5b30caac340072a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direct analog control (Servos, Dimmers).  <br /></td></tr>
 <tr class="separator:a3c5e237fccfaa08e5b30caac340072a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20d5834d1e47032bb2fae949ed74011f" id="r_a20d5834d1e47032bb2fae949ed74011f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a20d5834d1e47032bb2fae949ed74011f">onAccessoryError</a> (uint16_t address, uint8_t errorId, std::string errorMsg) override</td></tr>
 <tr class="memdesc:a20d5834d1e47032bb2fae949ed74011f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hardware Diagnostic Error.  <br /></td></tr>
 <tr class="separator:a20d5834d1e47032bb2fae949ed74011f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a626e25d673ed40f428ffd374019f7b15" id="r_a626e25d673ed40f428ffd374019f7b15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a626e25d673ed40f428ffd374019f7b15">onSensorStateChanged</a> (uint32_t sensorId, bool isActive) override</td></tr>
-<tr class="memdesc:a626e25d673ed40f428ffd374019f7b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Occupancy / Feedback Sensors.  <br /></td></tr>
-<tr class="separator:a626e25d673ed40f428ffd374019f7b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb4b42c285e840d44ade9f75caf999d" id="r_acdb4b42c285e840d44ade9f75caf999d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#acdb4b42c285e840d44ade9f75caf999d">onTrackPowerChanged</a> (<a class="el" href="namespaceModelRail.html#aba3c14c7f62f52bfc261b158f109596b">PowerState</a> state) override</td></tr>
-<tr class="memdesc:acdb4b42c285e840d44ade9f75caf999d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report global track power status change.  <br /></td></tr>
-<tr class="separator:acdb4b42c285e840d44ade9f75caf999d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a1fc0cd43fc1d13fee4a54d95ddb00b" id="r_a9a1fc0cd43fc1d13fee4a54d95ddb00b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a9a1fc0cd43fc1d13fee4a54d95ddb00b">onSensorStateChange</a> (uint32_t sensorId, bool isActive) override</td></tr>
+<tr class="memdesc:a9a1fc0cd43fc1d13fee4a54d95ddb00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Occupancy / Feedback Sensors.  <br /></td></tr>
+<tr class="separator:a9a1fc0cd43fc1d13fee4a54d95ddb00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe008b56d935e82b6de6b217dae9c1f" id="r_abfe008b56d935e82b6de6b217dae9c1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#abfe008b56d935e82b6de6b217dae9c1f">onTrackPowerChange</a> (<a class="el" href="namespaceModelRail.html#aba3c14c7f62f52bfc261b158f109596b">PowerState</a> state) override</td></tr>
+<tr class="memdesc:abfe008b56d935e82b6de6b217dae9c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report global track power status change.  <br /></td></tr>
+<tr class="separator:abfe008b56d935e82b6de6b217dae9c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa60b0b39db764e5624ce8b9122802691" id="r_aa60b0b39db764e5624ce8b9122802691"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#aa60b0b39db764e5624ce8b9122802691">onFastClockUpdated</a> (int64_t modelTimeUnix, float factor) override</td></tr>
 <tr class="memdesc:aa60b0b39db764e5624ce8b9122802691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model Time / Fast Clock (RCN-211).  <br /></td></tr>
 <tr class="separator:aa60b0b39db764e5624ce8b9122802691"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,9 +165,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aab533407d59dea405c5a573e475dba72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6132acdc71a86eb71f4fb1f355a22b3a" id="r_a6132acdc71a86eb71f4fb1f355a22b3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a6132acdc71a86eb71f4fb1f355a22b3a">onLocoTelemetryData</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#ae48f508dc8465b1fff6742e42cb340cb">TelemetryType</a> type, float value) override</td></tr>
 <tr class="separator:a6132acdc71a86eb71f4fb1f355a22b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6eefc23b0b6c2ff1f332e7e7f765af6f" id="r_a6eefc23b0b6c2ff1f332e7e7f765af6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a6eefc23b0b6c2ff1f332e7e7f765af6f">onLocoExternalStateChanged</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#a41ffacf0504ccf6f180c29fc9db211c5">ExternalState</a> state) override</td></tr>
-<tr class="memdesc:a6eefc23b0b6c2ff1f332e7e7f765af6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0.  <br /></td></tr>
-<tr class="separator:a6eefc23b0b6c2ff1f332e7e7f765af6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956e1fecead7501f5bbae25d93995beb" id="r_a956e1fecead7501f5bbae25d93995beb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a956e1fecead7501f5bbae25d93995beb">onLocoExternalStateChange</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#a41ffacf0504ccf6f180c29fc9db211c5">ExternalState</a> state) override</td></tr>
+<tr class="memdesc:a956e1fecead7501f5bbae25d93995beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0.  <br /></td></tr>
+<tr class="separator:a956e1fecead7501f5bbae25d93995beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f8576a182dc28d30d441539e7148fe0" id="r_a4f8576a182dc28d30d441539e7148fe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a4f8576a182dc28d30d441539e7148fe0">onLocoRailComRawData</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, uint8_t appId, const std::vector&lt; uint8_t &gt; &amp;data) override</td></tr>
 <tr class="memdesc:a4f8576a182dc28d30d441539e7148fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw/Proprietary RailCom Data.  <br /></td></tr>
 <tr class="separator:a4f8576a182dc28d30d441539e7148fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,14 +180,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1686100465eb041816931bd33f9abbc6" id="r_a1686100465eb041816931bd33f9abbc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a1686100465eb041816931bd33f9abbc6">onSusiConfigRead</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value) override</td></tr>
 <tr class="memdesc:a1686100465eb041816931bd33f9abbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result of reading a SUSI configuration register.  <br /></td></tr>
 <tr class="separator:a1686100465eb041816931bd33f9abbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e3f01023138b375b719856fe94da654" id="r_a4e3f01023138b375b719856fe94da654"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a4e3f01023138b375b719856fe94da654">onConfigBlockLoaded</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, std::string domain, const std::vector&lt; uint8_t &gt; &amp;data) override</td></tr>
-<tr class="memdesc:a4e3f01023138b375b719856fe94da654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mass Data Transfer.  <br /></td></tr>
-<tr class="separator:a4e3f01023138b375b719856fe94da654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790c5f951e586a311b8fd3238faca626" id="r_a790c5f951e586a311b8fd3238faca626"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a790c5f951e586a311b8fd3238faca626">onConfigBlockLoad</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, std::string domain, const std::vector&lt; uint8_t &gt; &amp;data) override</td></tr>
+<tr class="memdesc:a790c5f951e586a311b8fd3238faca626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mass Data Transfer.  <br /></td></tr>
+<tr class="separator:a790c5f951e586a311b8fd3238faca626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a731dda7f96bf046fc04d8604a1971441" id="r_a731dda7f96bf046fc04d8604a1971441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a731dda7f96bf046fc04d8604a1971441">onProgressUpdate</a> (std::string operation, float percent) override</td></tr>
 <tr class="memdesc:a731dda7f96bf046fc04d8604a1971441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feedback on the progress of a long-running operation.  <br /></td></tr>
 <tr class="separator:a731dda7f96bf046fc04d8604a1971441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab360f070fc76a998f8bfd2d1911120c1" id="r_ab360f070fc76a998f8bfd2d1911120c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#ab360f070fc76a998f8bfd2d1911120c1">onMechanicalSyncEvent</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178">SyncType</a> type, uint8_t value) override</td></tr>
-<tr class="separator:ab360f070fc76a998f8bfd2d1911120c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7239b5d171ccfb3d10163ed74fb2e0c" id="r_ad7239b5d171ccfb3d10163ed74fb2e0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#ad7239b5d171ccfb3d10163ed74fb2e0c">onLocoEventSync</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178">SyncType</a> type, uint32_t value) override</td></tr>
+<tr class="memdesc:ad7239b5d171ccfb3d10163ed74fb2e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggered when a mechanical synchronization event occurs. Critical for "Puff-Chuff" sync (Steam) or Gear Changes (Diesel).  <br /></td></tr>
+<tr class="separator:ad7239b5d171ccfb3d10163ed74fb2e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classModelRail_1_1IUnifiedModelTrainListener"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classModelRail_1_1IUnifiedModelTrainListener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html">ModelRail::IUnifiedModelTrainListener</a></td></tr>
 <tr class="memitem:a4ffc7d8ec7c90fe1867540917d256ea7 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener" id="r_a4ffc7d8ec7c90fe1867540917d256ea7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a4ffc7d8ec7c90fe1867540917d256ea7">~IUnifiedModelTrainListener</a> ()=default</td></tr>
 <tr class="separator:a4ffc7d8ec7c90fe1867540917d256ea7 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,9 +198,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf256f59cb4c04729027f1a2a65f08e2 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener" id="r_adf256f59cb4c04729027f1a2a65f08e2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#adf256f59cb4c04729027f1a2a65f08e2">onCvWriteRequest</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, int cvNumber, uint8_t value)=0</td></tr>
 <tr class="memdesc:adf256f59cb4c04729027f1a2a65f08e2 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener"><td class="mdescLeft">&#160;</td><td class="mdescRight">A request to write a CV to a decoder has been issued.  <br /></td></tr>
 <tr class="separator:adf256f59cb4c04729027f1a2a65f08e2 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10a790a1afb153ae756b0588f1cb5296 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener" id="r_a10a790a1afb153ae756b0588f1cb5296"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a10a790a1afb153ae756b0588f1cb5296">onLocoSyncEvent</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178">SyncType</a> type, uint32_t value)=0</td></tr>
-<tr class="memdesc:a10a790a1afb153ae756b0588f1cb5296 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggered when a mechanical synchronization event occurs. Critical for "Puff-Chuff" sync (Steam) or Gear Changes (Diesel).  <br /></td></tr>
-<tr class="separator:a10a790a1afb153ae756b0588f1cb5296 inherit pub_methods_classModelRail_1_1IUnifiedModelTrainListener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -336,8 +334,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4e3f01023138b375b719856fe94da654" name="a4e3f01023138b375b719856fe94da654"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e3f01023138b375b719856fe94da654">&#9670;&#160;</a></span>onConfigBlockLoaded()</h2>
+<a id="a790c5f951e586a311b8fd3238faca626" name="a790c5f951e586a311b8fd3238faca626"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790c5f951e586a311b8fd3238faca626">&#9670;&#160;</a></span>onConfigBlockLoad()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,7 +344,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onConfigBlockLoaded </td>
+          <td class="memname">void ModelRail::XmlPrinter::onConfigBlockLoad </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -384,7 +382,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a2d09aca390eddba49c219f964651477d">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a1daae0306690d50091ab313056a3768c">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00204">204</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
@@ -747,8 +745,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ab80f2e8590c9d4538f2511d928f0ad" name="a7ab80f2e8590c9d4538f2511d928f0ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ab80f2e8590c9d4538f2511d928f0ad">&#9670;&#160;</a></span>onLocoDispatchStateChanged()</h2>
+<a id="abfcd7b34e0c982bf95432d9ebd02c0c1" name="abfcd7b34e0c982bf95432d9ebd02c0c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfcd7b34e0c982bf95432d9ebd02c0c1">&#9670;&#160;</a></span>onLocoDispatchStateChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -757,7 +755,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onLocoDispatchStateChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onLocoDispatchStateChange </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -796,14 +794,14 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#ae3f01ee94e32c6e756740a5a75a6d639">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a3760221f6bf3688875d98fc22ebaddad">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00184">184</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
 </div>
 </div>
-<a id="a6eefc23b0b6c2ff1f332e7e7f765af6f" name="a6eefc23b0b6c2ff1f332e7e7f765af6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6eefc23b0b6c2ff1f332e7e7f765af6f">&#9670;&#160;</a></span>onLocoExternalStateChanged()</h2>
+<a id="ad7239b5d171ccfb3d10163ed74fb2e0c" name="ad7239b5d171ccfb3d10163ed74fb2e0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7239b5d171ccfb3d10163ed74fb2e0c">&#9670;&#160;</a></span>onLocoEventSync()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -812,7 +810,65 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onLocoExternalStateChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onLocoEventSync </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
+          <td class="paramname"><em>loco</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178">SyncType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Triggered when a mechanical synchronization event occurs. Critical for "Puff-Chuff" sync (Steam) or Gear Changes (Diesel). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loco</td><td>The locomotive handle. </td></tr>
+    <tr><td class="paramname">type</td><td>The type of mechanical event (e.g., CAM_PULSE). </td></tr>
+    <tr><td class="paramname">value</td><td>An optional value (e.g., new gear number). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#aab8de8f6ea4b7fecb99c86fe7d5cb42c">ModelRail::IUnifiedModelTrainListener</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00206">206</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
+
+<p class="reference">References <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00111">ModelRail::LocoHandle::address</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178af2257e0f2716ef6a50e2080157e0d82b">ModelRail::BRAKE_SQUEAL_START</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a5c16497e96445d7b7f66bd0b2cc4187d">ModelRail::CAM_PULSE</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178afc1d40a47836fb19437c80ee2bafd7ab">ModelRail::CYLINDER_CYCLE</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a3f4714fd8ecb7159d35b0629a62e3fcf">ModelRail::DOOR_MOVEMENT</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a3d950d89f49f1d72b47f16fb312209ab">ModelRail::GEAR_CHANGE_DOWN</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a2f25bc7199761d36b28f472ea68d961c">ModelRail::GEAR_CHANGE_UP</a>, and <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00113">ModelRail::LocoHandle::mfxUid</a>.</p>
+
+</div>
+</div>
+<a id="a956e1fecead7501f5bbae25d93995beb" name="a956e1fecead7501f5bbae25d93995beb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956e1fecead7501f5bbae25d93995beb">&#9670;&#160;</a></span>onLocoExternalStateChange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModelRail::XmlPrinter::onLocoExternalStateChange </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -838,14 +894,14 @@ Public Member Functions</h2></td></tr>
 
 <p>External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0. </p>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#ac936810816b3afca801cbdfbcd58eddc">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#aa83b69fc02f538c3d89377910ef16122">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00199">199</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
 </div>
 </div>
-<a id="a09859d5d7a94f5347cdc6de0526422c7" name="a09859d5d7a94f5347cdc6de0526422c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09859d5d7a94f5347cdc6de0526422c7">&#9670;&#160;</a></span>onLocoFunctionAnalogValue()</h2>
+<a id="ade395f381e12795e11c7456dbc9b97b9" name="ade395f381e12795e11c7456dbc9b97b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade395f381e12795e11c7456dbc9b97b9">&#9670;&#160;</a></span>onLocoFunctionAnalogChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -854,7 +910,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onLocoFunctionAnalogValue </td>
+          <td class="memname">void ModelRail::XmlPrinter::onLocoFunctionAnalogChange </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -892,14 +948,14 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#ae50712b92eda8b84d85811cc4b41bf16">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#afb0f30a1db5e4cd04548e415f16526a9">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00183">183</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
 </div>
 </div>
-<a id="a13d033c8dd50b089807d77cf78cf001c" name="a13d033c8dd50b089807d77cf78cf001c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13d033c8dd50b089807d77cf78cf001c">&#9670;&#160;</a></span>onLocoFunctionChanged()</h2>
+<a id="a439338fc3e8b7d7d8d23f3a0ea46b6e0" name="a439338fc3e8b7d7d8d23f3a0ea46b6e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439338fc3e8b7d7d8d23f3a0ea46b6e0">&#9670;&#160;</a></span>onLocoFunctionChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -908,7 +964,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onLocoFunctionChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onLocoFunctionChange </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -947,7 +1003,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#ae7811bd7213f26d5c0cf1fa41fe6fe3c">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#ab20c729582c37af7406835ac76fc5056">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00182">182</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
@@ -1007,8 +1063,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa85e8ee423f757b2d8c0664e6745adfa" name="aa85e8ee423f757b2d8c0664e6745adfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa85e8ee423f757b2d8c0664e6745adfa">&#9670;&#160;</a></span>onLocoSpeedChanged()</h2>
+<a id="ac1561e347cde1179895604f91ec142f6" name="ac1561e347cde1179895604f91ec142f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1561e347cde1179895604f91ec142f6">&#9670;&#160;</a></span>onLocoSpeedChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1017,7 +1073,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onLocoSpeedChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onLocoSpeedChange </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
           <td class="paramname"><em>loco</em>, </td>
@@ -1064,7 +1120,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#afbe5ba1fb5fa827fb1fb94a4d3b592be">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a8e756a152320aae0eccaff46e3286662">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00161">161</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
@@ -1115,52 +1171,6 @@ Public Member Functions</h2></td></tr>
 <p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a46280ead37c875eb502f6ccd7674273f">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00198">198</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
-
-</div>
-</div>
-<a id="ab360f070fc76a998f8bfd2d1911120c1" name="ab360f070fc76a998f8bfd2d1911120c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab360f070fc76a998f8bfd2d1911120c1">&#9670;&#160;</a></span>onMechanicalSyncEvent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onMechanicalSyncEvent </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;&#160;</td>
-          <td class="paramname"><em>loco</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178">SyncType</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00206">206</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
-
-<p class="reference">References <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00111">ModelRail::LocoHandle::address</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178af2257e0f2716ef6a50e2080157e0d82b">ModelRail::BRAKE_SQUEAL_START</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a5c16497e96445d7b7f66bd0b2cc4187d">ModelRail::CAM_PULSE</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178afc1d40a47836fb19437c80ee2bafd7ab">ModelRail::CYLINDER_CYCLE</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a3f4714fd8ecb7159d35b0629a62e3fcf">ModelRail::DOOR_MOVEMENT</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a3d950d89f49f1d72b47f16fb312209ab">ModelRail::GEAR_CHANGE_DOWN</a>, <a class="el" href="namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178a2f25bc7199761d36b28f472ea68d961c">ModelRail::GEAR_CHANGE_UP</a>, and <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00113">ModelRail::LocoHandle::mfxUid</a>.</p>
 
 </div>
 </div>
@@ -1267,8 +1277,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a626e25d673ed40f428ffd374019f7b15" name="a626e25d673ed40f428ffd374019f7b15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a626e25d673ed40f428ffd374019f7b15">&#9670;&#160;</a></span>onSensorStateChanged()</h2>
+<a id="a9a1fc0cd43fc1d13fee4a54d95ddb00b" name="a9a1fc0cd43fc1d13fee4a54d95ddb00b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a1fc0cd43fc1d13fee4a54d95ddb00b">&#9670;&#160;</a></span>onSensorStateChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1277,7 +1287,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onSensorStateChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onSensorStateChange </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>sensorId</em>, </td>
@@ -1310,14 +1320,14 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a3854be13e0e2a69ce60aa397001f0164">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#aaac5d7e9e52d36f11fff4be9179271c0">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00191">191</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
 </div>
 </div>
-<a id="a2c199fc3b17354d5a569779d7f72e16f" name="a2c199fc3b17354d5a569779d7f72e16f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c199fc3b17354d5a569779d7f72e16f">&#9670;&#160;</a></span>onSignalAspectChanged()</h2>
+<a id="ac0c8583ce4f0b1346349062346c3ec89" name="ac0c8583ce4f0b1346349062346c3ec89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0c8583ce4f0b1346349062346c3ec89">&#9670;&#160;</a></span>onSignalAspectChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1326,7 +1336,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onSignalAspectChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onSignalAspectChange </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>address</em>, </td>
@@ -1364,7 +1374,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a1e1c2caea954f102e8ce09f8e3e5e134">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a627921da200b4cde2e3d1e6a30356ca0">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00188">188</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
@@ -1482,8 +1492,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acdb4b42c285e840d44ade9f75caf999d" name="acdb4b42c285e840d44ade9f75caf999d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdb4b42c285e840d44ade9f75caf999d">&#9670;&#160;</a></span>onTrackPowerChanged()</h2>
+<a id="abfe008b56d935e82b6de6b217dae9c1f" name="abfe008b56d935e82b6de6b217dae9c1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe008b56d935e82b6de6b217dae9c1f">&#9670;&#160;</a></span>onTrackPowerChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1492,7 +1502,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onTrackPowerChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onTrackPowerChange </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespaceModelRail.html#aba3c14c7f62f52bfc261b158f109596b">PowerState</a>&#160;</td>
           <td class="paramname"><em>state</em></td><td>)</td>
@@ -1514,14 +1524,14 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a0c8c653536c0f67bdd6597db67cfe38f">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a427190dee7e56fe267c8b2fc85253bd4">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00192">192</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
 </div>
 </div>
-<a id="af8f71f79f67ddf731d84035dd261cf8c" name="af8f71f79f67ddf731d84035dd261cf8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8f71f79f67ddf731d84035dd261cf8c">&#9670;&#160;</a></span>onTurnoutChanged()</h2>
+<a id="aefa7919988f738987c5aa34b2b8a97bd" name="aefa7919988f738987c5aa34b2b8a97bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefa7919988f738987c5aa34b2b8a97bd">&#9670;&#160;</a></span>onTurnoutChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1530,7 +1540,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ModelRail::XmlPrinter::onTurnoutChanged </td>
+          <td class="memname">void ModelRail::XmlPrinter::onTurnoutChange </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>address</em>, </td>
@@ -1569,7 +1579,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a7a3d2f94f72aeb5e697b8cb21a2c1456">ModelRail::IUnifiedModelTrainListener</a>.</p>
+<p>Implements <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#aedffd22a8bf56c4ba4c69e5c29acf070">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00187">187</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
 
@@ -1584,7 +1594,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceModelRail.html">ModelRail</a></li><li class="navelem"><a class="el" href="classModelRail_1_1XmlPrinter.html">XmlPrinter</a></li>
-    <li class="footer">Generated on Sun Nov 16 2025 11:26:45 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sun Nov 16 2025 12:51:45 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
