@@ -12,6 +12,9 @@ Our API documentation is automatically generated and hosted on GitHub Pages.
 *   **Swagger (REST API):** The specification for our REST interface, including interactive endpoints, is available here:
     [Swagger UI](https://chatelao.github.io/xDuinoRails_xTrainAPI/swagger)
 
+*   **Web Tool:** A simple web application for interacting with the xTrainAPI is available here:
+    [Web Tool](https://chatelao.github.io/xDuinoRails_xTrainAPI/webtool)
+
 ## What is xTrainAPI?
 
 xTrainAPI is a unified interface that allows various digital model train systems to be controlled through a single, consistent API. This simplifies the development of control software by abstracting the complexity of individual protocols (such as DCC, Märklin Motorola, etc.).
