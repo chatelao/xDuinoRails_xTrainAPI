@@ -242,7 +242,9 @@ public:
         _stream->println("    <event type=\"onLocoSpeedChange\">");
         _stream->print("        <loco address=\"");
         _stream->print(loco.address);
-        _stream->print("\" protocol=\"DCC\" mfxUid=\"");
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->print("\" mfxUid=\"");
         _stream->print(loco.mfxUid);
         _stream->println("\" />");
         _stream->print("        <speed speedPercent=\"");
@@ -259,7 +261,9 @@ public:
         _stream->println("    <event type=\"onLocoFunctionChange\">");
         _stream->print("        <loco address=\"");
         _stream->print(loco.address);
-        _stream->println("\" protocol=\"DCC\" />");
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
         _stream->print("        <function fIndex=\"");
         _stream->print(fIndex);
         _stream->print("\" isActive=\"");
@@ -271,7 +275,9 @@ public:
         _stream->println("    <event type=\"onLocoFunctionAnalogChange\">");
         _stream->print("        <loco address=\"");
         _stream->print(loco.address);
-        _stream->println("\" protocol=\"DCC\" />");
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
         _stream->print("        <function fIndex=\"");
         _stream->print(fIndex);
         _stream->print("\" value=\"");
@@ -280,82 +286,332 @@ public:
         _stream->println("    </event>");
     }
     void onLocoDispatchStateChange(const LocoHandle& loco, bool isAcquired, std::string ownerId) override {
-        _stream->println("    <event type=\"onLocoDispatchStateChange\"></event>");
+        _stream->println("    <event type=\"onLocoDispatchStateChange\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <dispatch isAcquired=\"");
+        _stream->print(isAcquired ? "true" : "false");
+        _stream->print("\" ownerId=\"");
+        escapeXml(ownerId);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onConsistLink(const LocoHandle& master, const LocoHandle& slave, ConsistType type, bool inverted) override {
-        _stream->println("    <event type=\"onConsistLink\"></event>");
+        _stream->println("    <event type=\"onConsistLink\">");
+        _stream->print("        <master address=\"");
+        _stream->print(master.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(master.protocol);
+        _stream->println("\" />");
+        _stream->print("        <slave address=\"");
+        _stream->print(slave.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(slave.protocol);
+        _stream->println("\" />");
+        _stream->print("        <consist type=\"");
+        switch (type) {
+            case ConsistType::ADVANCED_DCC: _stream->print("ADVANCED_DCC"); break;
+            case ConsistType::UNIVERSAL_HOST: _stream->print("UNIVERSAL_HOST"); break;
+            case ConsistType::MU_LOCONET: _stream->print("MU_LOCONET"); break;
+        }
+        _stream->print("\" inverted=\"");
+        _stream->print(inverted ? "true" : "false");
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onConsistUnlink(const LocoHandle& slave) override {
-        _stream->println("    <event type=\"onConsistUnlink\"></event>");
+        _stream->println("    <event type=\"onConsistUnlink\">");
+        _stream->print("        <slave address=\"");
+        _stream->print(slave.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(slave.protocol);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onTurnoutChange(uint16_t address, bool isThrown, bool isFeedback) override {
-        _stream->println("    <event type=\"onTurnoutChange\"></event>");
+        _stream->println("    <event type=\"onTurnoutChange\">");
+        _stream->print("        <turnout address=\"");
+        _stream->print(address);
+        _stream->print("\" isThrown=\"");
+        _stream->print(isThrown ? "true" : "false");
+        _stream->print("\" isFeedback=\"");
+        _stream->print(isFeedback ? "true" : "false");
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onSignalAspectChange(uint16_t address, uint8_t aspectId, bool isFeedback) override {
-        _stream->println("    <event type=\"onSignalAspectChange\"></event>");
+        _stream->println("    <event type=\"onSignalAspectChange\">");
+        _stream->print("        <signal address=\"");
+        _stream->print(address);
+        _stream->print("\" aspectId=\"");
+        _stream->print(aspectId);
+        _stream->print("\" isFeedback=\"");
+        _stream->print(isFeedback ? "true" : "false");
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onAccessoryAnalogValue(uint16_t address, float value0to1) override {
-        _stream->println("    <event type=\"onAccessoryAnalogValue\"></event>");
+        _stream->println("    <event type=\"onAccessoryAnalogValue\">");
+        _stream->print("        <accessory address=\"");
+        _stream->print(address);
+        _stream->print("\" value0to1=\"");
+        _stream->print(value0to1);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onAccessoryError(uint16_t address, uint8_t errorId, std::string errorMsg) override {
-        _stream->println("    <event type=\"onAccessoryError\"></event>");
+        _stream->println("    <event type=\"onAccessoryError\">");
+        _stream->print("        <accessory address=\"");
+        _stream->print(address);
+        _stream->print("\" errorId=\"");
+        _stream->print(errorId);
+        _stream->print("\" errorMsg=\"");
+        escapeXml(errorMsg);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onSensorStateChange(uint32_t sensorId, bool isActive) override {
-        _stream->println("    <event type=\"onSensorStateChange\"></event>");
+        _stream->println("    <event type=\"onSensorStateChange\">");
+        _stream->print("        <sensor sensorId=\"");
+        _stream->print(sensorId);
+        _stream->print("\" isActive=\"");
+        _stream->print(isActive ? "true" : "false");
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onTrackPowerChange(PowerState state) override {
-        _stream->println("    <event type=\"onTrackPowerChange\"></event>");
+        _stream->println("    <event type=\"onTrackPowerChange\">");
+        _stream->print("        <power state=\"");
+        switch (state) {
+            case PowerState::OFF: _stream->print("OFF"); break;
+            case PowerState::ON: _stream->print("ON"); break;
+            case PowerState::EMERGENCY_STOP: _stream->print("EMERGENCY_STOP"); break;
+            case PowerState::SHORT_CIRCUIT: _stream->print("SHORT_CIRCUIT"); break;
+        }
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onFastClockUpdated(int64_t modelTimeUnix, float factor) override {
-        _stream->println("    <event type=\"onFastClockUpdated\"></event>");
+        _stream->println("    <event type=\"onFastClockUpdated\">");
+        _stream->print("        <clock modelTimeUnix=\"");
+        _stream->print(modelTimeUnix);
+        _stream->print("\" factor=\"");
+        _stream->print(factor);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onHardwareNodeAttached(std::string nodeUid, std::string productName, bool booster) override {
-        _stream->println("    <event type=\"onHardwareNodeAttached\"></event>");
+        _stream->println("    <event type=\"onHardwareNodeAttached\">");
+        _stream->print("        <node nodeUid=\"");
+        escapeXml(nodeUid);
+        _stream->print("\" productName=\"");
+        escapeXml(productName);
+        _stream->print("\" booster=\"");
+        _stream->print(booster ? "true" : "false");
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onHardwareNodeLost(std::string nodeUid) override {
-        _stream->println("    <event type=\"onHardwareNodeLost\"></event>");
+        _stream->println("    <event type=\"onHardwareNodeLost\">");
+        _stream->print("        <node nodeUid=\"");
+        escapeXml(nodeUid);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onSystemMessage(std::string source, std::string message) override {
-        _stream->println("    <event type=\"onSystemMessage\"></event>");
+        _stream->println("    <event type=\"onSystemMessage\">");
+        _stream->print("        <message source=\"");
+        escapeXml(source);
+        _stream->print("\" message=\"");
+        escapeXml(message);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onLocoDetectedOnBlock(uint32_t sensorId, const LocoHandle& loco, DecoderOrientation orientation) override {
-        _stream->println("    <event type=\"onLocoDetectedOnBlock\"></event>");
+        _stream->println("    <event type=\"onLocoDetectedOnBlock\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <detection sensorId=\"");
+        _stream->print(sensorId);
+        _stream->print("\" orientation=\"");
+        switch (orientation) {
+            case DecoderOrientation::NORMAL: _stream->print("NORMAL"); break;
+            case DecoderOrientation::INVERTED: _stream->print("INVERTED"); break;
+            case DecoderOrientation::UNKNOWN: _stream->print("UNKNOWN"); break;
+        }
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onLocoTelemetryData(const LocoHandle& loco, TelemetryType type, float value) override {
-        _stream->println("    <event type=\"onLocoTelemetryData\"></event>");
+        _stream->println("    <event type=\"onLocoTelemetryData\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <telemetry type=\"");
+        switch (type) {
+            case TelemetryType::SPEED_KMH: _stream->print("SPEED_KMH"); break;
+            case TelemetryType::LOAD_PERCENT: _stream->print("LOAD_PERCENT"); break;
+            case TelemetryType::VOLTAGE_TRACK: _stream->print("VOLTAGE_TRACK"); break;
+            case TelemetryType::CURRENT_AMP: _stream->print("CURRENT_AMP"); break;
+            case TelemetryType::FUEL_LEVEL: _stream->print("FUEL_LEVEL"); break;
+            case TelemetryType::TEMP_CELSIUS: _stream->print("TEMP_CELSIUS"); break;
+            case TelemetryType::QOS_ERROR_RATE: _stream->print("QOS_ERROR_RATE"); break;
+            case TelemetryType::ODOMETER_VALUE: _stream->print("ODOMETER_VALUE"); break;
+            case TelemetryType::POSITION_CONFIDENCE: _stream->print("POSITION_CONFIDENCE"); break;
+        }
+        _stream->print("\" value=\"");
+        _stream->print(value);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onLocoExternalStateChange(const LocoHandle& loco, ExternalState state) override {
-        _stream->println("    <event type=\"onLocoExternalStateChange\"></event>");
+        _stream->println("    <event type=\"onLocoExternalStateChange\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <externalState state=\"");
+        switch (state) {
+            case ExternalState::FREE_RUN: _stream->print("FREE_RUN"); break;
+            case ExternalState::STOPPED_BY_ABC_SIGNAL: _stream->print("STOPPED_BY_ABC_SIGNAL"); break;
+            case ExternalState::STOPPED_BY_DC_BRAKE: _stream->print("STOPPED_BY_DC_BRAKE"); break;
+            case ExternalState::STOPPED_BY_HLU: _stream->print("STOPPED_BY_HLU"); break;
+            case ExternalState::RESTRICTED_SPEED_HLU: _stream->print("RESTRICTED_SPEED_HLU"); break;
+        }
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onLocoRailComRawData(const LocoHandle& loco, uint8_t appId, const std::vector<uint8_t>& data) override {
-        _stream->println("    <event type=\"onLocoRailComRawData\"></event>");
+        _stream->println("    <event type=\"onLocoRailComRawData\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <railcom appId=\"");
+        _stream->print(appId);
+        _stream->print("\" data=\"");
+        for (uint8_t byte : data) {
+            if (byte < 16) _stream->print('0');
+            _stream->print(byte, HEX);
+        }
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onNewLocoDiscovered(const LocoHandle& loco, const std::string& name, const std::string& icon) override {
-        _stream->println("    <event type=\"onNewLocoDiscovered\"></event>");
+        _stream->println("    <event type=\"onNewLocoDiscovered\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <discovery name=\"");
+        escapeXml(name);
+        _stream->print("\" icon=\"");
+        escapeXml(icon);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onCvRead(const LocoHandle& loco, int cvNumber) override {
-        _stream->println("    <event type=\"onCvRead\"></event>");
+        _stream->println("    <event type=\"onCvRead\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <cv cvNumber=\"");
+        _stream->print(cvNumber);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onCvWrite(const LocoHandle& loco, int cvNumber, uint8_t value) override {
-        _stream->println("    <event type=\"onCvWrite\"></event>");
+        _stream->println("    <event type=\"onCvWrite\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <cv cvNumber=\"");
+        _stream->print(cvNumber);
+        _stream->print("\" value=\"");
+        _stream->print(value);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onCvReadDone(const LocoHandle& loco, int cvNumber, uint8_t value, bool success) override {
-        _stream->println("    <event type=\"onCvReadDone\"></event>");
+        _stream->println("    <event type=\"onCvReadDone\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <cv cvNumber=\"");
+        _stream->print(cvNumber);
+        _stream->print("\" value=\"");
+        _stream->print(value);
+        _stream->print("\" success=\"");
+        _stream->print(success ? "true" : "false");
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onSusiConfigRead(const LocoHandle& loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value) override {
-        _stream->println("    <event type=\"onSusiConfigRead\"></event>");
+        _stream->println("    <event type=\"onSusiConfigRead\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <susi bank=\"");
+        _stream->print(bankIndex);
+        _stream->print("\" index=\"");
+        _stream->print(susiIndex);
+        _stream->print("\" value=\"");
+        _stream->print(value);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onConfigBlockLoad(const LocoHandle& loco, std::string domain, const std::vector<uint8_t>& data) override {
-        _stream->println("    <event type=\"onConfigBlockLoad\"></event>");
+        _stream->println("    <event type=\"onConfigBlockLoad\">");
+        _stream->print("        <loco address=\"");
+        _stream->print(loco.address);
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->println("\" />");
+        _stream->print("        <config domain=\"");
+        escapeXml(domain);
+        _stream->print("\" data=\"");
+        for (uint8_t byte : data) {
+            if (byte < 16) _stream->print('0');
+            _stream->print(byte, HEX);
+        }
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onProgressUpdate(std::string operation, float percent) override {
-        _stream->println("    <event type=\"onProgressUpdate\"></event>");
+        _stream->println("    <event type=\"onProgressUpdate\">");
+        _stream->print("        <progress operation=\"");
+        escapeXml(operation);
+        _stream->print("\" percent=\"");
+        _stream->print(percent);
+        _stream->println("\" />");
+        _stream->println("    </event>");
     }
     void onLocoEventSync(const LocoHandle& loco, SyncType type, uint32_t value) override {
         _stream->println("    <event type=\"onLocoEventSync\">");
         _stream->print("        <loco address=\"");
         _stream->print(loco.address);
-        _stream->print("\" protocol=\"DCC\" mfxUid=\"");
+        _stream->print("\" protocol=\"");
+        printProtocol(loco.protocol);
+        _stream->print("\" mfxUid=\"");
         _stream->print(loco.mfxUid);
         _stream->println("\" />");
         _stream->print("        <sync type=\"");
@@ -375,6 +631,34 @@ public:
 
 private:
     Stream* _stream;
+
+    void printProtocol(Protocol protocol) {
+        switch (protocol) {
+            case Protocol::DCC: _stream->print("DCC"); break;
+            case Protocol::MM_I: _stream->print("MM_I"); break;
+            case Protocol::MM_II: _stream->print("MM_II"); break;
+            case Protocol::MFX: _stream->print("MFX"); break;
+            case Protocol::SELECTRIX: _stream->print("SELECTRIX"); break;
+            case Protocol::SX2: _stream->print("SX2"); break;
+            case Protocol::LOCONET: _stream->print("LOCONET"); break;
+            case Protocol::BIDIB: _stream->print("BIDIB"); break;
+            case Protocol::XPRESSNET: _stream->print("XPRESSNET"); break;
+            case Protocol::CAN_GENERIC: _stream->print("CAN_GENERIC"); break;
+        }
+    }
+
+    void escapeXml(const std::string& str) {
+        for (char c : str) {
+            switch (c) {
+                case '&': _stream->print("&amp;"); break;
+                case '<': _stream->print("&lt;"); break;
+                case '>': _stream->print("&gt;"); break;
+                case '"': _stream->print("&quot;"); break;
+                case '\'': _stream->print("&apos;"); break;
+                default: _stream->print(c);
+            }
+        }
+    }
 };
 
 class XmlParser {

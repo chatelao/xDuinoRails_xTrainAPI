@@ -44,10 +44,10 @@
         </xs:sequence>
         <xs:attribute name="type" type="xs:string" use="required">
             <xs:annotation>
-                <xs:documentation>onLocoSpeedChanged</xs:documentation>
+                <xs:documentation>The name of the event, e.g., 'onLocoSpeedChange'.</xs:documentation>
             </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="timestamp" type="xs:dateTime" use="required">
+        <xs:attribute name="timestamp" type="xs:dateTime" use="optional">
             <xs:annotation>
                 <xs:documentation>2023-03-15T12:00:00Z</xs:documentation>
             </xs:annotation>
@@ -231,6 +231,7 @@
     </xs:complexType>
 
     <xs:complexType name="DetectionType">
+        <xs:attribute name="sensorId" type="xs:positiveInteger" use="required"/>
         <xs:attribute name="orientation" type="DecoderOrientationEnum" use="required"/>
     </xs:complexType>
 
@@ -284,7 +285,7 @@
                 <xs:documentation>CommandStation</xs:documentation>
             </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="text" type="xs:string" use="required">
+        <xs:attribute name="message" type="xs:string" use="required">
             <xs:annotation>
                 <xs:documentation>System startup complete.</xs:documentation>
             </xs:annotation>
