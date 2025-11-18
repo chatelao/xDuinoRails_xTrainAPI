@@ -95,7 +95,7 @@
 
     <!-- Event: A generic system message or log entry. -->
     <event type="onSystemMessage" timestamp="2024-07-29T10:05:00Z">
-        <message source="PowerManager" text="Emergency stop triggered by user." />
+        <message source="PowerManager" message="Emergency stop triggered by user." />
     </event>
 
     <!-- ===================================================================== -->
@@ -104,9 +104,8 @@
 
     <!-- Event: A locomotive has been detected on a specific track block. -->
     <event type="onLocoDetectedOnBlock" timestamp="2024-07-29T10:06:15Z">
-        <sensor sensorId="501" />
         <loco address="3" protocol="DCC" />
-        <detection orientation="NORMAL" />
+        <detection sensorId="501" orientation="NORMAL" />
     </event>
 
     <!-- Event: Telemetry data has been received from a locomotive. -->
