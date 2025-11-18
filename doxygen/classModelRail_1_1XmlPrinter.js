@@ -3,6 +3,7 @@ var classModelRail_1_1XmlPrinter =
     [ "XmlPrinter", "classModelRail_1_1XmlPrinter.html#ad040838fe44d9a628f4a58b67f70b815", null ],
     [ "begin", "classModelRail_1_1XmlPrinter.html#aad9d7481bccf1fb38181aef78ed126dd", null ],
     [ "end", "classModelRail_1_1XmlPrinter.html#a2a50b29f71427c1941f8f3316b58d3d7", null ],
+    [ "getImplementedApi", "classModelRail_1_1XmlPrinter.html#a52095d5fc95fddc15190cfd4a1b3dfbf", null ],
     [ "onAccessoryAnalogValue", "classModelRail_1_1XmlPrinter.html#a3c5e237fccfaa08e5b30caac340072a2", null ],
     [ "onAccessoryError", "classModelRail_1_1XmlPrinter.html#a20d5834d1e47032bb2fae949ed74011f", null ],
     [ "onConfigBlockLoad", "classModelRail_1_1XmlPrinter.html#a790c5f951e586a311b8fd3238faca626", null ],

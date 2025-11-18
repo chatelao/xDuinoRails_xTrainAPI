@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['consisttype_0',['ConsistType',['../namespaceModelRail.html#aecda06d1a716e3e2a318ca168a8d8e2c',1,'ModelRail']]]
+  ['apifeature_0',['ApiFeature',['../namespaceModelRail.html#ad11aa6957464d4311eddd676c35461d1',1,'ModelRail']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['telemetrytype_0',['TelemetryType',['../namespaceModelRail.html#ae48f508dc8465b1fff6742e42cb340cb',1,'ModelRail']]]
+  ['synctype_0',['SyncType',['../namespaceModelRail.html#a3a9c9bfe3951a8a53f045c39479dd178',1,'ModelRail']]]
 ];

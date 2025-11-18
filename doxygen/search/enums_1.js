@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['decoderorientation_0',['DecoderOrientation',['../namespaceModelRail.html#abae0acde73a7a734cca408b01dc24b03',1,'ModelRail']]],
-  ['direction_1',['Direction',['../namespaceModelRail.html#afe98c6614d10e85614d309d919327cf6',1,'ModelRail']]]
+  ['consisttype_0',['ConsistType',['../namespaceModelRail.html#aecda06d1a716e3e2a318ca168a8d8e2c',1,'ModelRail']]]
 ];

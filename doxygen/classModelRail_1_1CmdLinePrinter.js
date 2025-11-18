@@ -1,6 +1,7 @@
 var classModelRail_1_1CmdLinePrinter =
 [
     [ "CmdLinePrinter", "classModelRail_1_1CmdLinePrinter.html#a2b61682c4cbd56977bf5853609afcbca", null ],
+    [ "getImplementedApi", "classModelRail_1_1CmdLinePrinter.html#aef333b772b0b838492a894c26d6528e7", null ],
     [ "onAccessoryAnalogValue", "classModelRail_1_1CmdLinePrinter.html#a332eb12b5795495574565a73a81ce221", null ],
     [ "onAccessoryError", "classModelRail_1_1CmdLinePrinter.html#a04052c3fb2f7fd9a67d48b375defaded", null ],
     [ "onConfigBlockLoad", "classModelRail_1_1CmdLinePrinter.html#a645f0a64f11a32622cee83cacacc9406", null ],
