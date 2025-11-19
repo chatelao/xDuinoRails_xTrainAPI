@@ -30,7 +30,14 @@ Failure to keep these files consistent will result in build failures and a broke
 
 ## Language
 
-All communication, documentation, and code comments must be in English. This ensures that the project is accessible to a global audience.
+All communication, and code comments must be in English. This ensures that the project is accessible to a global audience.
+
+## Documentation Language
+
+All documentation files must be provided in both German and English.
+
+-   **German:** Files must end with the `.de.md` extension.
+-   **English:** Files must end with the `.en.md` extension.
 
 ## File Naming Conventions
 

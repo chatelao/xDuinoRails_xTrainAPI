@@ -194,6 +194,8 @@ namespace ModelRail {
          * @param speedPercent 0.0f (Stop) to 100.0f (Max).
          * @param direction Requested direction.
          * @param speedSteps Step mode (14, 28, 128).
+         * @CliShort `<t cab speed dir steps>`
+         * @CliLong `<THROTTLE cab="123" speed="100" direction="1" steps="128">`
          */
         virtual void onLocoSpeedChange(const LocoHandle& loco, float speedPercent, Direction direction, int speedSteps) {}
 
@@ -201,12 +203,15 @@ namespace ModelRail {
          * @brief Binary function control (F0-F68+).
          * @param fIndex Function index (0=Light, 1=F1...).
          * @param isActive True=ON, False=OFF.
+         * @CliShort `<f cab f_num state>`
+         * @CliLong `<FUNCTION cab="123" function="1" state="1">`
          */
         virtual void onLocoFunctionChange(const LocoHandle& loco, int fIndex, bool isActive)                            {}
 
         /**
          * @brief Analog function value (Pressure-sensitive / Analog features).
          * @param value Analog value (0-255).
+         * @CliLong `<LOCO_FUNCTION_ANALOG cab="123" function="8" value="255">`
          */
         virtual void onLocoFunctionAnalogChange(const LocoHandle& loco, int fIndex, uint8_t value)                        {}
 
@@ -214,6 +219,7 @@ namespace ModelRail {
          * @brief Slot Management (LocoNet/XpressNet).
          * @param isAcquired True=Controlled by throttle, False=Released.
          * @param ownerId ID of the controlling device.
+         * @CliLong `<DISPATCH cab="123" state="ACQUIRED" owner="user1">`
          */
         virtual void onLocoDispatchStateChange(const LocoHandle& loco, bool isAcquired, std::string ownerId)            {}
 
@@ -221,12 +227,14 @@ namespace ModelRail {
          * @brief Consist Linking report.
          * @param type Linking method (CV19 vs Software).
          * @param inverted True if slave is reversed relative to master.
+         * @CliLong `<CONSIST_LINK master="123" slave="456" type="ADVANCED" inverted="false">`
          */
         virtual void onConsistLink(const LocoHandle& master, const LocoHandle& slave, ConsistType type, bool inverted)   {}
 
         /**
          * @brief Dissolve a multi-traction link.
          * @param slave The locomotive being removed from the consist.
+         * @CliLong `<CONSIST_UNLINK slave="456">`
          */
         virtual void onConsistUnlink(const LocoHandle& slave)                                                            {}
 
@@ -238,24 +246,30 @@ namespace ModelRail {
          * @brief Standard Turnout (Binary).
          * @param isThrown True=Diverging, False=Straight.
          * @param isFeedback True=Real hardware confirmation.
+         * @CliShort `<T id state>`
+         * @CliLong `<TURNOUT id="456" state="1">`
          */
         virtual void onTurnoutChange(uint16_t address, bool isThrown, bool isFeedback)                 {}
 
         /**
          * @brief Extended Signal Aspects (0-255).
          * @param aspectId Aspect ID (Hp0, Hp1, etc.).
+         * @CliShort `<Q id state>`
+         * @CliLong `<ACCESSORY id="789" state="1">`
          */
         virtual void onSignalAspectChange(uint16_t address, uint8_t aspectId, bool isFeedback)         {}
         
         /**
          * @brief Direct analog control (Servos, Dimmers).
          * @param value0to1 Normalized float (0.0 - 1.0).
+         * @CliLong `<ACCESSORY_ANALOG address="789" value="0.75">`
          */
         virtual void onAccessoryAnalogValue(uint16_t address, float value0to1)                          {}
 
         /**
          * @brief Hardware Diagnostic Error.
          * @param errorId 1=OpenLoad, 2=Short, 3=Stall.
+         * @CliLong `<ACCESSORY_ERROR address="789" errorId="1" errorMessage="Overload">`
          */
         virtual void onAccessoryError(uint16_t address, uint8_t errorId, std::string errorMsg)          {}
 
@@ -263,6 +277,8 @@ namespace ModelRail {
          * @brief Occupancy / Feedback Sensors.
          * @param sensorId Unique 32-bit ID.
          * @param isActive True=Occupied.
+         * @CliShort `<Y id state>`
+         * @CliLong `<SENSOR id="101" state="ACTIVE">`
          */
         virtual void onSensorStateChange(uint32_t sensorId, bool isActive)                             {}
 
@@ -273,6 +289,8 @@ namespace ModelRail {
         /**
          * @brief Report global track power status change.
          * @param state The new power state (ON, OFF, EMERGENCY_STOP).
+         * @CliShort `<1>` / `<0>`
+         * @CliLong `<POWER state="ON">`
          */
         virtual void onTrackPowerChange(PowerState state)                                                              {}
 
@@ -280,18 +298,21 @@ namespace ModelRail {
          * @brief Model Time / Fast Clock (RCN-211).
          * @param modelTimeUnix Unix Timestamp (int64).
          * @param factor Acceleration factor.
+         * @CliLong `<FAST_CLOCK time="1678886400" factor="4.0">`
          */
         virtual void onFastClockUpdated(int64_t modelTimeUnix, float factor)                                            {}
 
         /**
          * @brief New Hardware Node Found (BiDiB / LNet).
          * @param booster True if node supplies power.
+         * @CliLong `<HARDWARE_NODE_ATTACHED uid="abc-123" productName="xPressNet" booster="false">`
          */
         virtual void onHardwareNodeAttached(std::string nodeUid, std::string productName, bool booster) {}
 
         /**
          * @brief A hardware node has disconnected from the bus.
          * @param nodeUid Unique identifier of the lost node.
+         * @CliLong `<HARDWARE_NODE_LOST uid="abc-123">`
          */
         virtual void onHardwareNodeLost(std::string nodeUid)                                            {}
 
@@ -299,6 +320,7 @@ namespace ModelRail {
          * @brief Generic system message or log entry.
          * @param source The component originating the message (e.g., "PowerManager", "BiDiB-Stack").
          * @param message The content of the message.
+         * @CliLong `<SYSTEM_MESSAGE source="WebServer" message="User logged in">`
          */
         virtual void onSystemMessage(std::string source, std::string message)                           {}
 
@@ -309,25 +331,36 @@ namespace ModelRail {
         /**
          * @brief Train Location & Orientation Detection (RCN-217 Ch1).
          * @param orientation Chimney vs Tender first.
+         * @CliLong `<LOCO_DETECTED_ON_BLOCK sensorId="202" cab="123" orientation="FORWARD">`
          */
         virtual void onLocoDetectedOnBlock(uint32_t sensorId, const LocoHandle& loco, DecoderOrientation orientation)    {}
+
+        /**
+         * @brief Telemetry data from a locomotive (e.g., from RailCom Channel 2).
+         * @param type The type of data being reported (e.g., speed, load).
+         * @param value The actual telemetry value.
+         * @CliLong `<LOCO_TELEMETRY cab="123" type="SPEED" value="50.5">`
+         */
         virtual void onLocoTelemetryData(const LocoHandle& loco, TelemetryType type, float value)                        {}
 
         /**
          * @brief External State Change (ABC / HLU).
          * Loco stopped by track module despite throttle > 0.
+         * @CliLong `<LOCO_EXTERNAL_STATE cab="123" state="PARKED">`
          */
         virtual void onLocoExternalStateChange(const LocoHandle& loco, ExternalState state)                             {}
 
         /**
          * @brief Raw/Proprietary RailCom Data.
          * @param appId RailCom Application ID.
+         * @CliLong `<LOCO_RAILCOM_RAW cab="123" appId="1" data="A0B1C2">`
          */
         virtual void onLocoRailComRawData(const LocoHandle& loco, uint8_t appId, const std::vector<uint8_t>& data)       {}
 
         /**
          * @brief Discovery (mfx / RailComPlus).
          * @param icon Suggested icon filename.
+         * @CliLong `<NEW_LOCO_DISCOVERED cab="123" name="Big Boy" icon="steam_loco.png">`
          */
         virtual void onNewLocoDiscovered(const LocoHandle& loco, const std::string& name, const std::string& icon)       {}
 
@@ -339,6 +372,8 @@ namespace ModelRail {
          * @brief A request to read a CV from a decoder has been issued.
          * @param loco The target locomotive.
          * @param cvNumber The Configuration Variable number to read.
+         * @CliShort `<R cv track>`
+         * @CliLong `<READ_CV cv="1" track="1">`
          */
         virtual void onCvRead(const LocoHandle& loco, int cvNumber)                                               {}
 
@@ -347,6 +382,8 @@ namespace ModelRail {
          * @param loco The target locomotive.
          * @param cvNumber The Configuration Variable number to write.
          * @param value The 8-bit value to write.
+         * @CliShort `<W cv value track>`
+         * @CliLong `<WRITE_CV_BYTE cv="1" value="123" track="1">`
          */
         virtual void onCvWrite(const LocoHandle& loco, int cvNumber, uint8_t value)                                {}
 
@@ -356,6 +393,8 @@ namespace ModelRail {
          * @param cvNumber The CV that was read.
          * @param value The 8-bit value returned by the decoder.
          * @param success True if the read was successful (acknowledged).
+         * @CliShort `r <cv> <value>`
+         * @CliLong `<CV_READ_RESULT cab="123" cv="1" value="10" success="true">`
          */
         virtual void onCvReadDone(const LocoHandle& loco, int cvNumber, uint8_t value, bool success)                   {}
 
@@ -365,12 +404,14 @@ namespace ModelRail {
          * @param bankIndex The memory bank (e.g., for different sound profiles).
          * @param susiIndex The specific SUSI register index.
          * @param value The value read from the register.
+         * @CliLong `<SUSI_CONFIG_READ cab="123" bank="1" index="2" value="3">`
          */
         virtual void onSusiConfigRead(const LocoHandle& loco, uint8_t bankIndex, uint8_t susiIndex, uint8_t value)       {}
         
         /**
          * @brief Mass Data Transfer.
          * @param domain Data type (e.g., "ICON", "MFX_CONFIG").
+         * @CliLong `<CONFIG_BLOCK_LOADED cab="123" domain="sound" data="DEADBEEF">`
          */
         virtual void onConfigBlockLoad(const LocoHandle& loco, std::string domain, const std::vector<uint8_t>& data)   {}
 
@@ -378,6 +419,7 @@ namespace ModelRail {
          * @brief Feedback on the progress of a long-running operation.
          * @param operation A string identifying the task (e.g., "CV_READ_ALL", "FIRMWARE_UPDATE").
          * @param percent The progress from 0.0 to 100.0.
+         * @CliLong `<PROGRESS_UPDATE operation="Firmware Update" percent="75.5">`
          */
         virtual void onProgressUpdate(std::string operation, float percent)                                              {}
 
@@ -391,6 +433,7 @@ namespace ModelRail {
          * @param loco The locomotive handle.
          * @param type The type of mechanical event (e.g., CAM_PULSE).
          * @param value An optional value (e.g., new gear number).
+         * @CliLong `<MECHANICAL_SYNC_EVENT cab="123" type="CHUFF" value="1">`
          */
         virtual void onLocoEventSync(const LocoHandle& loco, SyncType type, uint32_t value) {}
     };

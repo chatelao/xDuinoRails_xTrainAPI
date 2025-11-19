@@ -1,12 +1,53 @@
-# Extended CLI Syntax
+# CLI Syntax
 
-This document defines the extended command-line interface (CLI) syntax for the xDuinoRails_xTrainAPI. This syntax is designed to be more self-descriptive and easier to read than the legacy DCC-EX single-character commands. It also includes commands for all events supported by the `IUnifiedModelTrainListener` interface.
+This document defines the command-line interface (CLI) syntax for the xDuinoRails_xTrainAPI. It covers both the legacy DCC-EX single-character commands and the more self-descriptive extended syntax.
+
+## Command Formats
+
+The `CmdLineParser` class is designed to accept both the legacy single-character commands and the extended commands at all times. The `CmdLinePrinter` class, however, can be configured to output either the legacy or extended format. This is controlled by the `USE_EXTENDED_CLI_SYNTAX` compile-time flag. By default, the extended syntax is used for output. To use the legacy syntax for output, set this flag to `0` during compilation.
 
 The extended syntax follows a consistent format: `<COMMAND param1="value1" param2="value2" ...>`.
 
-**Note on Command Formats:** The `CmdLineParser` class is designed to accept both the legacy single-character commands and the extended commands at all times. The `CmdLinePrinter` class, however, can be configured to output either the legacy or extended format. This is controlled by the `USE_EXTENDED_CLI_SYNTAX` compile-time flag. By default, the extended syntax is used for output. To use the legacy syntax for output, set this flag to `0` during compilation.
+The legacy syntax uses single-character opcodes: `<o p1 p2 ...>`.
 
-## A. Track Power & Status
+## EBNF (Syntax Definition)
+
+The Extended Backus-aur Form (EBNF) defines the "grammar" or structure of *every* message sent to or from the Command Station.
+
+```ebnf
+(* A message is a single command or response,
+   enclosed in angle brackets. *)
+message     ::= "<" opcode ( " " parameter )* ">"
+
+(* The opcode is ALWAYS a single character.
+   It is case-sensitive
+   (e.g., 'T' is a command, 't' is a response). *)
+opcode      ::= CHARACTER
+
+(* Parameters are separated by spaces. *)
+parameter   ::= keyword | numeric | string
+
+(* A keyword is a sequence of characters without spaces.
+   It consists of letters (a-z, A-Z), digits (0-9), and/
+   or the underscore (_).
+   Keywords are NOT case-sensitive. *)
+keyword     ::= ( LETTER | DIGIT | "_" )+
+
+(* A number is a sequence of digits.
+   It can optionally have a negative prefix (-).
+   Decimals or floating-point numbers are not supported. *)
+numeric     ::= [ "-" ] DIGIT+
+
+(* A string is any sequence of characters
+   enclosed in double-quotes (").
+   It may contain spaces. *)
+string      ::= '"' ( ANY_CHAR_EXCEPT_QUOTE )* '"'
+
+````
+
+## Command Table
+
+### A. Track Power & Status
 
 | Command | Legacy | Parameters | Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
@@ -17,7 +58,7 @@ The extended syntax follows a consistent format: `<COMMAND param1="value1" param
 | `HARDWARE_INFO` | `<i>` | (none) | Requests hardware and board information. | `<HARDWARE_INFO>` |
 | `REBOOT` | `<Z>` | (none) | Reboots the command station. | `<REBOOT>` |
 
-## B. Loco Control (Throttle)
+### B. Loco Control (Throttle)
 
 | Command | Legacy | Parameters | Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
@@ -30,7 +71,7 @@ The extended syntax follows a consistent format: `<COMMAND param1="value1" param
 | `RESET_EMERGENCY_STOP_ALL` | `<E>` | (none) | Resets emergency stop for all locos. | `<RESET_EMERGENCY_STOP_ALL>` |
 | `DELETE_LOCO` | `<R>` | `cab` | Deletes a loco from the roster. | `<DELETE_LOCO cab="123">` |
 
-## C. CV Programming
+### C. CV Programming
 
 | Command | Legacy | Parameters | Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
@@ -40,14 +81,14 @@ The extended syntax follows a consistent format: `<COMMAND param1="value1" param
 | `PAGED_MODE_WRITE` | `<P>` | `cv`, `value` | Paged mode CV write. | `<PAGED_MODE_WRITE cv="1" value="123">` |
 | `DIRECT_MODE_WRITE` | `<M>` | `address`, `value` | Direct mode register write. | `<DIRECT_MODE_WRITE address="1024" value="123">` |
 
-## D. Accessories
+### D. Accessories
 
 | Command | Legacy | Parameters | Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
 | `TURNOUT` | `<T>` | `id`, `state` (0=THROWN, 1=STRAIGHT) | Sets a turnout's state. | `<TURNOUT id="456" state="1">` |
 | `ACCESSORY` | `<Q>` | `id`, `state` (0=OFF, 1=ON) | Sets an accessory's state. | `<ACCESSORY id="789" state="1">` |
 
-## E. Sensors & I/O
+### E. Sensors & I/O
 
 | Command | Legacy | Parameters | Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
@@ -55,14 +96,14 @@ The extended syntax follows a consistent format: `<COMMAND param1="value1" param
 | `DEFINE_VPIN` | `<N>` | `vpin`, `type`, `state` (0/1) | Defines a VPIN. | `<DEFINE_VPIN vpin="1" type="INPUT" state="0">` |
 | `UNDEFINE_VPIN` | `<U>` | `vpin` | Undefines a VPIN. | `<UNDEFINE_VPIN vpin="1">` |
 
-## F. JSON Commands
+### F. JSON Commands
 
 | Command | Legacy | Parameters | Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
 | `JSON_QUERY` | `<J>` | `type` ("T", "A", "L", "S", "O", "R", "C") | Requests data in JSON format. | `<JSON_QUERY type="T">` |
 | `JSON_CONFIG` | `<=>` | `json` | Sends a configuration command in JSON. | `<JSON_CONFIG json="{...}">` |
 
-## G. Diagnostics & System
+### G. Diagnostics & System
 
 | Command | Legacy | Parameters | Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
@@ -71,7 +112,7 @@ The extended syntax follows a consistent format: `<COMMAND param1="value1" param
 | `ECHO` | `<+>`/`<->` | `state` ("ON" or "OFF") | Activates or deactivates echo mode. | `<ECHO state="ON">` |
 | `LIST_COMMANDS` | `<?>` | (none) | Requests a list of available commands. | `<LIST_COMMANDS>` |
 
-## H. Proposed New Commands
+### H. Proposed New Commands
 
 These commands are proposed to cover events in the `IUnifiedModelTrainListener` interface that are not covered by the legacy DCC-EX syntax.
 
