@@ -171,9 +171,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aab533407d59dea405c5a573e475dba72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Train Location &amp; Orientation Detection (RCN-217 Ch1).  <br /></td></tr>
 <tr class="separator:aab533407d59dea405c5a573e475dba72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6132acdc71a86eb71f4fb1f355a22b3a" id="r_a6132acdc71a86eb71f4fb1f355a22b3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a6132acdc71a86eb71f4fb1f355a22b3a">onLocoTelemetryData</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#ae48f508dc8465b1fff6742e42cb340cb">TelemetryType</a> type, float value) override</td></tr>
+<tr class="memdesc:a6132acdc71a86eb71f4fb1f355a22b3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Telemetry data from a locomotive (e.g., from RailCom Channel 2).  <br /></td></tr>
 <tr class="separator:a6132acdc71a86eb71f4fb1f355a22b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a956e1fecead7501f5bbae25d93995beb" id="r_a956e1fecead7501f5bbae25d93995beb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a956e1fecead7501f5bbae25d93995beb">onLocoExternalStateChange</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#a41ffacf0504ccf6f180c29fc9db211c5">ExternalState</a> state) override</td></tr>
-<tr class="memdesc:a956e1fecead7501f5bbae25d93995beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0.  <br /></td></tr>
+<tr class="memdesc:a956e1fecead7501f5bbae25d93995beb"><td class="mdescLeft">&#160;</td><td class="mdescRight">External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0. @CliLong <code>&lt;LOCO_EXTERNAL_STATE cab="123" state="PARKED"&gt;</code>  <br /></td></tr>
 <tr class="separator:a956e1fecead7501f5bbae25d93995beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f8576a182dc28d30d441539e7148fe0" id="r_a4f8576a182dc28d30d441539e7148fe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1XmlPrinter.html#a4f8576a182dc28d30d441539e7148fe0">onLocoRailComRawData</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, uint8_t appId, const std::vector&lt; uint8_t &gt; &amp;data) override</td></tr>
 <tr class="memdesc:a4f8576a182dc28d30d441539e7148fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw/Proprietary RailCom Data.  <br /></td></tr>
@@ -364,7 +365,7 @@ Public Member Functions</h2></td></tr>
 <p>Direct analog control (Servos, Dimmers). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value0to1</td><td>Normalized float (0.0 - 1.0). </td></tr>
+    <tr><td class="paramname">value0to1</td><td>Normalized float (0.0 - 1.0). @CliLong <code>&lt;ACCESSORY_ANALOG address="789" value="0.75"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -418,7 +419,7 @@ Public Member Functions</h2></td></tr>
 <p>Hardware Diagnostic Error. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">errorId</td><td>1=OpenLoad, 2=Short, 3=Stall. </td></tr>
+    <tr><td class="paramname">errorId</td><td>1=OpenLoad, 2=Short, 3=Stall. @CliLong <code>&lt;ACCESSORY_ERROR address="789" errorId="1" errorMessage="Overload"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -472,7 +473,7 @@ Public Member Functions</h2></td></tr>
 <p>Mass Data Transfer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">domain</td><td>Data type (e.g., "ICON", "MFX_CONFIG"). </td></tr>
+    <tr><td class="paramname">domain</td><td>Data type (e.g., "ICON", "MFX_CONFIG"). @CliLong <code>&lt;CONFIG_BLOCK_LOADED cab="123" domain="sound" data="DEADBEEF"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -535,7 +536,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>Linking method (CV19 vs Software). </td></tr>
-    <tr><td class="paramname">inverted</td><td>True if slave is reversed relative to master. </td></tr>
+    <tr><td class="paramname">inverted</td><td>True if slave is reversed relative to master. @CliLong <code>&lt;CONSIST_LINK master="123" slave="456" type="ADVANCED" inverted="false"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -575,7 +576,7 @@ Public Member Functions</h2></td></tr>
 <p>Dissolve a multi-traction link. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">slave</td><td>The locomotive being removed from the consist. </td></tr>
+    <tr><td class="paramname">slave</td><td>The locomotive being removed from the consist. @CliLong <code>&lt;CONSIST_UNLINK slave="456"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -626,7 +627,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
-    <tr><td class="paramname">cvNumber</td><td>The Configuration Variable number to read. </td></tr>
+    <tr><td class="paramname">cvNumber</td><td>The Configuration Variable number to read. @CliShort <code>&lt;R cv track&gt;</code> @CliLong <code>&lt;READ_CV cv="1" track="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -691,7 +692,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
     <tr><td class="paramname">cvNumber</td><td>The CV that was read. </td></tr>
     <tr><td class="paramname">value</td><td>The 8-bit value returned by the decoder. </td></tr>
-    <tr><td class="paramname">success</td><td>True if the read was successful (acknowledged). </td></tr>
+    <tr><td class="paramname">success</td><td>True if the read was successful (acknowledged). @CliShort <code>r &lt;cv&gt; &lt;value&gt;</code> @CliLong <code>&lt;CV_READ_RESULT cab="123" cv="1" value="10" success="true"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -749,7 +750,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
     <tr><td class="paramname">cvNumber</td><td>The Configuration Variable number to write. </td></tr>
-    <tr><td class="paramname">value</td><td>The 8-bit value to write. </td></tr>
+    <tr><td class="paramname">value</td><td>The 8-bit value to write. @CliShort <code>&lt;W cv value track&gt;</code> @CliLong <code>&lt;WRITE_CV_BYTE cv="1" value="123" track="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -800,7 +801,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">modelTimeUnix</td><td>Unix Timestamp (int64). </td></tr>
-    <tr><td class="paramname">factor</td><td>Acceleration factor. </td></tr>
+    <tr><td class="paramname">factor</td><td>Acceleration factor. @CliLong <code>&lt;FAST_CLOCK time="1678886400" factor="4.0"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -854,7 +855,7 @@ Public Member Functions</h2></td></tr>
 <p>New Hardware Node Found (BiDiB / LNet). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">booster</td><td>True if node supplies power. </td></tr>
+    <tr><td class="paramname">booster</td><td>True if node supplies power. @CliLong <code>&lt;HARDWARE_NODE_ATTACHED uid="abc-123" productName="xPressNet" booster="false"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -892,7 +893,7 @@ Public Member Functions</h2></td></tr>
 <p>A hardware node has disconnected from the bus. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nodeUid</td><td>Unique identifier of the lost node. </td></tr>
+    <tr><td class="paramname">nodeUid</td><td>Unique identifier of the lost node. @CliLong <code>&lt;HARDWARE_NODE_LOST uid="abc-123"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -946,7 +947,7 @@ Public Member Functions</h2></td></tr>
 <p>Train Location &amp; Orientation Detection (RCN-217 Ch1). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">orientation</td><td>Chimney vs Tender first. </td></tr>
+    <tr><td class="paramname">orientation</td><td>Chimney vs Tender first. @CliLong <code>&lt;LOCO_DETECTED_ON_BLOCK sensorId="202" cab="123" orientation="FORWARD"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1003,7 +1004,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">isAcquired</td><td>True=Controlled by throttle, False=Released. </td></tr>
-    <tr><td class="paramname">ownerId</td><td>ID of the controlling device. </td></tr>
+    <tr><td class="paramname">ownerId</td><td>ID of the controlling device. @CliLong <code>&lt;DISPATCH cab="123" state="ACQUIRED" owner="user1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1061,7 +1062,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">loco</td><td>The locomotive handle. </td></tr>
     <tr><td class="paramname">type</td><td>The type of mechanical event (e.g., CAM_PULSE). </td></tr>
-    <tr><td class="paramname">value</td><td>An optional value (e.g., new gear number). </td></tr>
+    <tr><td class="paramname">value</td><td>An optional value (e.g., new gear number). @CliLong <code>&lt;MECHANICAL_SYNC_EVENT cab="123" type="CHUFF" value="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1108,7 +1109,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0. </p>
+<p>External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0. @CliLong <code>&lt;LOCO_EXTERNAL_STATE cab="123" state="PARKED"&gt;</code> </p>
 
 <p>Reimplemented from <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a12d23bd38f566b0b3f27bf8ebcbe399a">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
@@ -1161,7 +1162,7 @@ Public Member Functions</h2></td></tr>
 <p>Analog function value (Pressure-sensitive / Analog features). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>Analog value (0-255). </td></tr>
+    <tr><td class="paramname">value</td><td>Analog value (0-255). @CliLong <code>&lt;LOCO_FUNCTION_ANALOG cab="123" function="8" value="255"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1218,7 +1219,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fIndex</td><td>Function index (0=Light, 1=F1...). </td></tr>
-    <tr><td class="paramname">isActive</td><td>True=ON, False=OFF. </td></tr>
+    <tr><td class="paramname">isActive</td><td>True=ON, False=OFF. @CliShort <code>&lt;f cab f_num state&gt;</code> @CliLong <code>&lt;FUNCTION cab="123" function="1" state="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1274,7 +1275,7 @@ Public Member Functions</h2></td></tr>
 <p>Raw/Proprietary RailCom Data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">appId</td><td>RailCom Application ID. </td></tr>
+    <tr><td class="paramname">appId</td><td>RailCom Application ID. @CliLong <code>&lt;LOCO_RAILCOM_RAW cab="123" appId="1" data="A0B1C2"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1339,7 +1340,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">loco</td><td>Target locomotive. </td></tr>
     <tr><td class="paramname">speedPercent</td><td>0.0f (Stop) to 100.0f (Max). </td></tr>
     <tr><td class="paramname">direction</td><td>Requested direction. </td></tr>
-    <tr><td class="paramname">speedSteps</td><td>Step mode (14, 28, 128). </td></tr>
+    <tr><td class="paramname">speedSteps</td><td>Step mode (14, 28, 128). @CliShort <code>&lt;t cab speed dir steps&gt;</code> @CliLong <code>&lt;THROTTLE cab="123" speed="100" direction="1" steps="128"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1392,6 +1393,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Telemetry data from a locomotive (e.g., from RailCom Channel 2). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of data being reported (e.g., speed, load). </td></tr>
+    <tr><td class="paramname">value</td><td>The actual telemetry value. @CliLong <code>&lt;LOCO_TELEMETRY cab="123" type="SPEED" value="50.5"&gt;</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Reimplemented from <a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a0faabf27fee15b25c3c5eab36b126f03">ModelRail::IUnifiedModelTrainListener</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00455">455</a> of file <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html">xDuinoRails_xTrainAPI_utils.h</a>.</p>
@@ -1443,7 +1453,7 @@ Public Member Functions</h2></td></tr>
 <p>Discovery (mfx / RailComPlus). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">icon</td><td>Suggested icon filename. </td></tr>
+    <tr><td class="paramname">icon</td><td>Suggested icon filename. @CliLong <code>&lt;NEW_LOCO_DISCOVERED cab="123" name="Big Boy" icon="steam_loco.png"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1494,7 +1504,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">operation</td><td>A string identifying the task (e.g., "CV_READ_ALL", "FIRMWARE_UPDATE"). </td></tr>
-    <tr><td class="paramname">percent</td><td>The progress from 0.0 to 100.0. </td></tr>
+    <tr><td class="paramname">percent</td><td>The progress from 0.0 to 100.0. @CliLong <code>&lt;PROGRESS_UPDATE operation="Firmware Update" percent="75.5"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1543,7 +1553,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sensorId</td><td>Unique 32-bit ID. </td></tr>
-    <tr><td class="paramname">isActive</td><td>True=Occupied. </td></tr>
+    <tr><td class="paramname">isActive</td><td>True=Occupied. @CliShort <code>&lt;Y id state&gt;</code> @CliLong <code>&lt;SENSOR id="101" state="ACTIVE"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1597,7 +1607,7 @@ Public Member Functions</h2></td></tr>
 <p>Extended Signal Aspects (0-255). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">aspectId</td><td>Aspect ID (Hp0, Hp1, etc.). </td></tr>
+    <tr><td class="paramname">aspectId</td><td>Aspect ID (Hp0, Hp1, etc.). @CliShort <code>&lt;Q id state&gt;</code> @CliLong <code>&lt;ACCESSORY id="789" state="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1660,7 +1670,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
     <tr><td class="paramname">bankIndex</td><td>The memory bank (e.g., for different sound profiles). </td></tr>
     <tr><td class="paramname">susiIndex</td><td>The specific SUSI register index. </td></tr>
-    <tr><td class="paramname">value</td><td>The value read from the register. </td></tr>
+    <tr><td class="paramname">value</td><td>The value read from the register. @CliLong <code>&lt;SUSI_CONFIG_READ cab="123" bank="1" index="2" value="3"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1711,7 +1721,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">source</td><td>The component originating the message (e.g., "PowerManager", "BiDiB-Stack"). </td></tr>
-    <tr><td class="paramname">message</td><td>The content of the message. </td></tr>
+    <tr><td class="paramname">message</td><td>The content of the message. @CliLong <code>&lt;SYSTEM_MESSAGE source="WebServer" message="User logged in"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1749,7 +1759,7 @@ Public Member Functions</h2></td></tr>
 <p>Report global track power status change. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The new power state (ON, OFF, EMERGENCY_STOP). </td></tr>
+    <tr><td class="paramname">state</td><td>The new power state (ON, OFF, EMERGENCY_STOP). @CliShort <code>&lt;1&gt;</code> / <code>&lt;0&gt;</code> @CliLong <code>&lt;POWER state="ON"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1806,7 +1816,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">isThrown</td><td>True=Diverging, False=Straight. </td></tr>
-    <tr><td class="paramname">isFeedback</td><td>True=Real hardware confirmation. </td></tr>
+    <tr><td class="paramname">isFeedback</td><td>True=Real hardware confirmation. @CliShort <code>&lt;T id state&gt;</code> @CliLong <code>&lt;TURNOUT id="456" state="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1826,7 +1836,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceModelRail.html">ModelRail</a></li><li class="navelem"><a class="el" href="classModelRail_1_1XmlPrinter.html">XmlPrinter</a></li>
-    <li class="footer">Generated on Tue Nov 18 2025 17:56:28 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Nov 19 2025 15:20:50 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

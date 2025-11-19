@@ -168,9 +168,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa543eb96cce789309356fc5b98b3b18a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Train Location &amp; Orientation Detection (RCN-217 Ch1).  <br /></td></tr>
 <tr class="separator:aa543eb96cce789309356fc5b98b3b18a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0faabf27fee15b25c3c5eab36b126f03" id="r_a0faabf27fee15b25c3c5eab36b126f03"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a0faabf27fee15b25c3c5eab36b126f03">onLocoTelemetryData</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#ae48f508dc8465b1fff6742e42cb340cb">TelemetryType</a> type, float value)</td></tr>
+<tr class="memdesc:a0faabf27fee15b25c3c5eab36b126f03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Telemetry data from a locomotive (e.g., from RailCom Channel 2).  <br /></td></tr>
 <tr class="separator:a0faabf27fee15b25c3c5eab36b126f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12d23bd38f566b0b3f27bf8ebcbe399a" id="r_a12d23bd38f566b0b3f27bf8ebcbe399a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a12d23bd38f566b0b3f27bf8ebcbe399a">onLocoExternalStateChange</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, <a class="el" href="namespaceModelRail.html#a41ffacf0504ccf6f180c29fc9db211c5">ExternalState</a> state)</td></tr>
-<tr class="memdesc:a12d23bd38f566b0b3f27bf8ebcbe399a"><td class="mdescLeft">&#160;</td><td class="mdescRight">External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0.  <br /></td></tr>
+<tr class="memdesc:a12d23bd38f566b0b3f27bf8ebcbe399a"><td class="mdescLeft">&#160;</td><td class="mdescRight">External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0. @CliLong <code>&lt;LOCO_EXTERNAL_STATE cab="123" state="PARKED"&gt;</code>  <br /></td></tr>
 <tr class="separator:a12d23bd38f566b0b3f27bf8ebcbe399a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a459f435c04148d089b58faeddd50f298" id="r_a459f435c04148d089b58faeddd50f298"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html#a459f435c04148d089b58faeddd50f298">onLocoRailComRawData</a> (const <a class="el" href="structModelRail_1_1LocoHandle.html">LocoHandle</a> &amp;loco, uint8_t appId, const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
 <tr class="memdesc:a459f435c04148d089b58faeddd50f298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw/Proprietary RailCom Data.  <br /></td></tr>
@@ -299,14 +300,14 @@ Public Member Functions</h2></td></tr>
 <p>Direct analog control (Servos, Dimmers). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value0to1</td><td>Normalized float (0.0 - 1.0). </td></tr>
+    <tr><td class="paramname">value0to1</td><td>Normalized float (0.0 - 1.0). @CliLong <code>&lt;ACCESSORY_ANALOG address="789" value="0.75"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a332eb12b5795495574565a73a81ce221">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a3c5e237fccfaa08e5b30caac340072a2">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00254">254</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00267">267</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -353,14 +354,14 @@ Public Member Functions</h2></td></tr>
 <p>Hardware Diagnostic Error. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">errorId</td><td>1=OpenLoad, 2=Short, 3=Stall. </td></tr>
+    <tr><td class="paramname">errorId</td><td>1=OpenLoad, 2=Short, 3=Stall. @CliLong <code>&lt;ACCESSORY_ERROR address="789" errorId="1" errorMessage="Overload"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a04052c3fb2f7fd9a67d48b375defaded">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a20d5834d1e47032bb2fae949ed74011f">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00260">260</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00274">274</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -407,14 +408,14 @@ Public Member Functions</h2></td></tr>
 <p>Mass Data Transfer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">domain</td><td>Data type (e.g., "ICON", "MFX_CONFIG"). </td></tr>
+    <tr><td class="paramname">domain</td><td>Data type (e.g., "ICON", "MFX_CONFIG"). @CliLong <code>&lt;CONFIG_BLOCK_LOADED cab="123" domain="sound" data="DEADBEEF"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a645f0a64f11a32622cee83cacacc9406">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a790c5f951e586a311b8fd3238faca626">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00375">375</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00416">416</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -468,14 +469,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>Linking method (CV19 vs Software). </td></tr>
-    <tr><td class="paramname">inverted</td><td>True if slave is reversed relative to master. </td></tr>
+    <tr><td class="paramname">inverted</td><td>True if slave is reversed relative to master. @CliLong <code>&lt;CONSIST_LINK master="123" slave="456" type="ADVANCED" inverted="false"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#ae312a6aa5dcf9328aa542357502c5a0e">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a76f7b89c31a20e64a068c24ef644af56">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00225">225</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00232">232</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -506,14 +507,14 @@ Public Member Functions</h2></td></tr>
 <p>Dissolve a multi-traction link. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">slave</td><td>The locomotive being removed from the consist. </td></tr>
+    <tr><td class="paramname">slave</td><td>The locomotive being removed from the consist. @CliLong <code>&lt;CONSIST_UNLINK slave="456"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a91ca61462804ba04a3d14326c417038f">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#aef6a4e83eaa2807789b430fdf67b8fec">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00231">231</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00239">239</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -555,14 +556,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
-    <tr><td class="paramname">cvNumber</td><td>The Configuration Variable number to read. </td></tr>
+    <tr><td class="paramname">cvNumber</td><td>The Configuration Variable number to read. @CliShort <code>&lt;R cv track&gt;</code> @CliLong <code>&lt;READ_CV cv="1" track="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a1ad8894a73b0346a3a9c313c79739b8a">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#ab398c248f2e938b6d7c7f4400e33d03a">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00343">343</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00378">378</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -618,14 +619,14 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
     <tr><td class="paramname">cvNumber</td><td>The CV that was read. </td></tr>
     <tr><td class="paramname">value</td><td>The 8-bit value returned by the decoder. </td></tr>
-    <tr><td class="paramname">success</td><td>True if the read was successful (acknowledged). </td></tr>
+    <tr><td class="paramname">success</td><td>True if the read was successful (acknowledged). @CliShort <code>r &lt;cv&gt; &lt;value&gt;</code> @CliLong <code>&lt;CV_READ_RESULT cab="123" cv="1" value="10" success="true"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a6b6f0008376fea1210933835e901150c">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#af992eed5ca4126f38a5a3e1c1997a8ce">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00360">360</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00399">399</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -674,14 +675,14 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
     <tr><td class="paramname">cvNumber</td><td>The Configuration Variable number to write. </td></tr>
-    <tr><td class="paramname">value</td><td>The 8-bit value to write. </td></tr>
+    <tr><td class="paramname">value</td><td>The 8-bit value to write. @CliShort <code>&lt;W cv value track&gt;</code> @CliLong <code>&lt;WRITE_CV_BYTE cv="1" value="123" track="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a2cbdda867c2eec935d014f5387c0fea4">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a571a362548aa244d2af8aeca1c03c81e">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00351">351</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00388">388</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -723,14 +724,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">modelTimeUnix</td><td>Unix Timestamp (int64). </td></tr>
-    <tr><td class="paramname">factor</td><td>Acceleration factor. </td></tr>
+    <tr><td class="paramname">factor</td><td>Acceleration factor. @CliLong <code>&lt;FAST_CLOCK time="1678886400" factor="4.0"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a892db97404923cc2b4739b0975b8a779">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#aa60b0b39db764e5624ce8b9122802691">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00284">284</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00303">303</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -777,14 +778,14 @@ Public Member Functions</h2></td></tr>
 <p>New Hardware Node Found (BiDiB / LNet). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">booster</td><td>True if node supplies power. </td></tr>
+    <tr><td class="paramname">booster</td><td>True if node supplies power. @CliLong <code>&lt;HARDWARE_NODE_ATTACHED uid="abc-123" productName="xPressNet" booster="false"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#aa39cff51cab40a77bfb4348d2f4255d5">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a8ad793654c71a9566a64f081b45c17d1">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00290">290</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00310">310</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -815,14 +816,14 @@ Public Member Functions</h2></td></tr>
 <p>A hardware node has disconnected from the bus. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nodeUid</td><td>Unique identifier of the lost node. </td></tr>
+    <tr><td class="paramname">nodeUid</td><td>Unique identifier of the lost node. @CliLong <code>&lt;HARDWARE_NODE_LOST uid="abc-123"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#aae3b7d87d34cbd348d63f15576d2893e">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a7310df5a7a2400abbc993b1dc12968d1">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00296">296</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00317">317</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -869,14 +870,14 @@ Public Member Functions</h2></td></tr>
 <p>Train Location &amp; Orientation Detection (RCN-217 Ch1). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">orientation</td><td>Chimney vs Tender first. </td></tr>
+    <tr><td class="paramname">orientation</td><td>Chimney vs Tender first. @CliLong <code>&lt;LOCO_DETECTED_ON_BLOCK sensorId="202" cab="123" orientation="FORWARD"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a932e943257092b1271cff074b7b3a276">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#aab533407d59dea405c5a573e475dba72">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00313">313</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00336">336</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -924,14 +925,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">isAcquired</td><td>True=Controlled by throttle, False=Released. </td></tr>
-    <tr><td class="paramname">ownerId</td><td>ID of the controlling device. </td></tr>
+    <tr><td class="paramname">ownerId</td><td>ID of the controlling device. @CliLong <code>&lt;DISPATCH cab="123" state="ACQUIRED" owner="user1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#aab8a156c43199b0ec1097f5f655b70a8">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#abfcd7b34e0c982bf95432d9ebd02c0c1">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00218">218</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00224">224</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -980,14 +981,14 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">loco</td><td>The locomotive handle. </td></tr>
     <tr><td class="paramname">type</td><td>The type of mechanical event (e.g., CAM_PULSE). </td></tr>
-    <tr><td class="paramname">value</td><td>An optional value (e.g., new gear number). </td></tr>
+    <tr><td class="paramname">value</td><td>An optional value (e.g., new gear number). @CliLong <code>&lt;MECHANICAL_SYNC_EVENT cab="123" type="CHUFF" value="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a4e4f8a40fb03e428998e1731345615fd">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#ad7239b5d171ccfb3d10163ed74fb2e0c">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00395">395</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00438">438</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00727">ModelRail::CmdLineParser::parse()</a>.</p>
 
@@ -1027,11 +1028,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0. </p>
+<p>External State Change (ABC / HLU). Loco stopped by track module despite throttle &gt; 0. @CliLong <code>&lt;LOCO_EXTERNAL_STATE cab="123" state="PARKED"&gt;</code> </p>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a86675162c605885524fca6da43fc46c7">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a956e1fecead7501f5bbae25d93995beb">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00320">320</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00351">351</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1078,14 +1079,14 @@ Public Member Functions</h2></td></tr>
 <p>Analog function value (Pressure-sensitive / Analog features). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>Analog value (0-255). </td></tr>
+    <tr><td class="paramname">value</td><td>Analog value (0-255). @CliLong <code>&lt;LOCO_FUNCTION_ANALOG cab="123" function="8" value="255"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a36e67bfbbb7fbd6153378ba2aca31efd">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#ade395f381e12795e11c7456dbc9b97b9">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00211">211</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00216">216</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1133,14 +1134,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fIndex</td><td>Function index (0=Light, 1=F1...). </td></tr>
-    <tr><td class="paramname">isActive</td><td>True=ON, False=OFF. </td></tr>
+    <tr><td class="paramname">isActive</td><td>True=ON, False=OFF. @CliShort <code>&lt;f cab f_num state&gt;</code> @CliLong <code>&lt;FUNCTION cab="123" function="1" state="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a31a102fa7683b6568b3a4ae8cf490dbf">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a439338fc3e8b7d7d8d23f3a0ea46b6e0">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00205">205</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00209">209</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00727">ModelRail::CmdLineParser::parse()</a>.</p>
 
@@ -1189,14 +1190,14 @@ Public Member Functions</h2></td></tr>
 <p>Raw/Proprietary RailCom Data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">appId</td><td>RailCom Application ID. </td></tr>
+    <tr><td class="paramname">appId</td><td>RailCom Application ID. @CliLong <code>&lt;LOCO_RAILCOM_RAW cab="123" appId="1" data="A0B1C2"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a3c0b01b069d25a5fb9cbcd73d9dc2a43">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a4f8576a182dc28d30d441539e7148fe0">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00326">326</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00358">358</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1252,14 +1253,14 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">loco</td><td>Target locomotive. </td></tr>
     <tr><td class="paramname">speedPercent</td><td>0.0f (Stop) to 100.0f (Max). </td></tr>
     <tr><td class="paramname">direction</td><td>Requested direction. </td></tr>
-    <tr><td class="paramname">speedSteps</td><td>Step mode (14, 28, 128). </td></tr>
+    <tr><td class="paramname">speedSteps</td><td>Step mode (14, 28, 128). @CliShort <code>&lt;t cab speed dir steps&gt;</code> @CliLong <code>&lt;THROTTLE cab="123" speed="100" direction="1" steps="128"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a4374b3e1e46c644c7ae3f03e3e7a2177">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#ac1561e347cde1179895604f91ec142f6">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00198">198</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00200">200</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00727">ModelRail::CmdLineParser::parse()</a>, and <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00674">ModelRail::XmlParser::parse()</a>.</p>
 
@@ -1305,9 +1306,18 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Telemetry data from a locomotive (e.g., from RailCom Channel 2). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of data being reported (e.g., speed, load). </td></tr>
+    <tr><td class="paramname">value</td><td>The actual telemetry value. @CliLong <code>&lt;LOCO_TELEMETRY cab="123" type="SPEED" value="50.5"&gt;</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a8487538966e100dcee55f958649d5cf4">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a6132acdc71a86eb71f4fb1f355a22b3a">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00314">314</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00344">344</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1354,14 +1364,14 @@ Public Member Functions</h2></td></tr>
 <p>Discovery (mfx / RailComPlus). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">icon</td><td>Suggested icon filename. </td></tr>
+    <tr><td class="paramname">icon</td><td>Suggested icon filename. @CliLong <code>&lt;NEW_LOCO_DISCOVERED cab="123" name="Big Boy" icon="steam_loco.png"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a89a4ec732a95b8f791148d55c9dbbfeb">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#add162c932211dd549c86f20f93a7cc5e">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00332">332</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00365">365</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1403,14 +1413,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">operation</td><td>A string identifying the task (e.g., "CV_READ_ALL", "FIRMWARE_UPDATE"). </td></tr>
-    <tr><td class="paramname">percent</td><td>The progress from 0.0 to 100.0. </td></tr>
+    <tr><td class="paramname">percent</td><td>The progress from 0.0 to 100.0. @CliLong <code>&lt;PROGRESS_UPDATE operation="Firmware Update" percent="75.5"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a84176990a10c9cc52d3bab576d0366ab">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a731dda7f96bf046fc04d8604a1971441">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00382">382</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00424">424</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1452,14 +1462,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sensorId</td><td>Unique 32-bit ID. </td></tr>
-    <tr><td class="paramname">isActive</td><td>True=Occupied. </td></tr>
+    <tr><td class="paramname">isActive</td><td>True=Occupied. @CliShort <code>&lt;Y id state&gt;</code> @CliLong <code>&lt;SENSOR id="101" state="ACTIVE"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#ad7a19892441f07a1215b518f4deb0211">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a9a1fc0cd43fc1d13fee4a54d95ddb00b">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00267">267</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00283">283</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1506,14 +1516,14 @@ Public Member Functions</h2></td></tr>
 <p>Extended Signal Aspects (0-255). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">aspectId</td><td>Aspect ID (Hp0, Hp1, etc.). </td></tr>
+    <tr><td class="paramname">aspectId</td><td>Aspect ID (Hp0, Hp1, etc.). @CliShort <code>&lt;Q id state&gt;</code> @CliLong <code>&lt;ACCESSORY id="789" state="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#a962a58323cb6fb9566f1efbb6a9c5bd9">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#ac0c8583ce4f0b1346349062346c3ec89">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00248">248</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00260">260</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00727">ModelRail::CmdLineParser::parse()</a>.</p>
 
@@ -1571,14 +1581,14 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">loco</td><td>The target locomotive. </td></tr>
     <tr><td class="paramname">bankIndex</td><td>The memory bank (e.g., for different sound profiles). </td></tr>
     <tr><td class="paramname">susiIndex</td><td>The specific SUSI register index. </td></tr>
-    <tr><td class="paramname">value</td><td>The value read from the register. </td></tr>
+    <tr><td class="paramname">value</td><td>The value read from the register. @CliLong <code>&lt;SUSI_CONFIG_READ cab="123" bank="1" index="2" value="3"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#aa468bfb6303174ef780710dd19f41f1c">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a1686100465eb041816931bd33f9abbc6">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00369">369</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00409">409</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1620,14 +1630,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">source</td><td>The component originating the message (e.g., "PowerManager", "BiDiB-Stack"). </td></tr>
-    <tr><td class="paramname">message</td><td>The content of the message. </td></tr>
+    <tr><td class="paramname">message</td><td>The content of the message. @CliLong <code>&lt;SYSTEM_MESSAGE source="WebServer" message="User logged in"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#ab7453b402fab96961496ed2f46e3a170">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#a2228c24eae332030da5dd363b9e6929e">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00303">303</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00325">325</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 </div>
 </div>
@@ -1658,14 +1668,14 @@ Public Member Functions</h2></td></tr>
 <p>Report global track power status change. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>The new power state (ON, OFF, EMERGENCY_STOP). </td></tr>
+    <tr><td class="paramname">state</td><td>The new power state (ON, OFF, EMERGENCY_STOP). @CliShort <code>&lt;1&gt;</code> / <code>&lt;0&gt;</code> @CliLong <code>&lt;POWER state="ON"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#ad80dbbf3d436b1eb2434eeab2755351f">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#abfe008b56d935e82b6de6b217dae9c1f">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00277">277</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00295">295</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00727">ModelRail::CmdLineParser::parse()</a>.</p>
 
@@ -1715,14 +1725,14 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">isThrown</td><td>True=Diverging, False=Straight. </td></tr>
-    <tr><td class="paramname">isFeedback</td><td>True=Real hardware confirmation. </td></tr>
+    <tr><td class="paramname">isFeedback</td><td>True=Real hardware confirmation. @CliShort <code>&lt;T id state&gt;</code> @CliLong <code>&lt;TURNOUT id="456" state="1"&gt;</code> </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="classModelRail_1_1CmdLinePrinter.html#ae7baeba814cbfd52b21e6ae621dc6fef">ModelRail::CmdLinePrinter</a>, and <a class="el" href="classModelRail_1_1XmlPrinter.html#aefa7919988f738987c5aa34b2b8a97bd">ModelRail::XmlPrinter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00242">242</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html#l00252">252</a> of file <a class="el" href="xDuinoRails__xTrainAPI_8h_source.html">xDuinoRails_xTrainAPI.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="xDuinoRails__xTrainAPI__utils_8h_source.html#l00727">ModelRail::CmdLineParser::parse()</a>.</p>
 
@@ -1737,7 +1747,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceModelRail.html">ModelRail</a></li><li class="navelem"><a class="el" href="classModelRail_1_1IUnifiedModelTrainListener.html">IUnifiedModelTrainListener</a></li>
-    <li class="footer">Generated on Tue Nov 18 2025 17:56:28 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Nov 19 2025 15:20:50 for xTrain API by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
