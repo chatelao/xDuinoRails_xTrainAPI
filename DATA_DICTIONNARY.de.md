@@ -1,6 +1,6 @@
 Hier ist das vollständige **Data Dictionary** der `UnifiedTrainAPI` als GitHub-optimierte Markdown-Tabelle. Du kannst diesen Block direkt in deine `README.md` oder Wiki-Seite kopieren.
 
-# xTrainAPI Data Dictionary
+# xTrainAPI Datenwörterbuch
 
 Diese Tabelle beschreibt alle Felder, Parameter und Datentypen, die in der `UnifiedTrainAPI` verwendet werden.
 
