@@ -1,12 +1,53 @@
-# Erweiterte CLI-Syntax
+# CLI-Syntax
 
-Dieses Dokument definiert die erweiterte Kommandozeilen-Schnittstellen (CLI) Syntax für die xDuinoRails_xTrainAPI. Diese Syntax ist selbsterklärender und leichter lesbar als die alten DCC-EX Einzelzeichen-Befehle. Sie beinhaltet außerdem Befehle für alle Ereignisse, die von der `IUnifiedModelTrainListener`-Schnittstelle unterstützt werden.
+Dieses Dokument definiert die Kommandozeilen-Schnittstellen (CLI) Syntax für die xDuinoRails_xTrainAPI. Es behandelt sowohl die alten DCC-EX Einzelzeichen-Befehle als auch die selbsterklärendere erweiterte Syntax.
+
+## Befehlsformate
+
+Die `CmdLineParser`-Klasse ist so konzipiert, dass sie jederzeit sowohl die alten Einzelzeichen-Befehle als auch die erweiterten Befehle akzeptiert. Die `CmdLinePrinter`-Klasse kann jedoch so konfiguriert werden, dass sie entweder das alte oder das erweiterte Format ausgibt. Dies wird durch das `USE_EXTENDED_CLI_SYNTAX`-Kompilierungsflag gesteuert. Standardmäßig wird die erweiterte Syntax für die Ausgabe verwendet. Um die alte Syntax für die Ausgabe zu verwenden, setzen Sie dieses Flag beim Kompilieren auf `0`.
 
 Die erweiterte Syntax folgt einem einheitlichen Format: `<BEFEHL param1="wert1" param2="wert2" ...>`.
 
-**Hinweis zu den Befehlsformaten:** Die `CmdLineParser`-Klasse ist so konzipiert, dass sie jederzeit sowohl die alten Einzelzeichen-Befehle als auch die erweiterten Befehle akzeptiert. Die `CmdLinePrinter`-Klasse kann jedoch so konfiguriert werden, dass sie entweder das alte oder das erweiterte Format ausgibt. Dies wird durch das `USE_EXTENDED_CLI_SYNTAX`-Kompilierungsflag gesteuert. Standardmäßig wird die erweiterte Syntax für die Ausgabe verwendet. Um die alte Syntax für die Ausgabe zu verwenden, setzen Sie dieses Flag beim Kompilieren auf `0`.
+Die alte Syntax verwendet Einzelzeichen-Opcodes: `<o p1 p2 ...>`.
 
-## A. Gleisstrom & Status
+## EBNF (Syntaxdefinition)
+
+Die Erweiterte Backus-Naur-Form (EBNF) definiert die "Grammatik" oder Struktur *jeder* Nachricht, die an die oder von der Kommandozentrale gesendet wird.
+
+```ebnf
+(* Eine Nachricht ist ein einzelner Befehl oder eine einzelne Antwort,
+   eingeschlossen in spitze Klammern. *)
+Nachricht    ::= "<" Opcode ( " " Parameter )* ">"
+
+(* Der Opcode ist IMMER ein einzelnes Zeichen.
+   Er ist Groß-/Kleinschreibung-sensitiv
+   (z. B. 'T' ist ein Befehl, 't' ist eine Antwort). *)
+Opcode       ::= ZEICHEN
+
+(* Parameter werden durch Leerzeichen getrennt. *)
+Parameter    ::= Schlüsselwort | Numerisch | Zeichenkette
+
+(* Ein Schlüsselwort ist eine Zeichenfolge ohne Leerzeichen.
+   Es besteht aus Buchstaben (a-z, A-Z), Ziffern (0-9) und/
+   oder dem Unterstrich (_).
+   Schlüsselwörter sind NICHT Groß-/Kleinschreibung-sensitiv. *)
+Schlüsselwort::= ( BUCHSTABE | ZIFFER | "_" )+
+
+(* Eine Zahl ist eine Folge von Ziffern.
+   Sie kann optional ein negatives Vorzeichen (-) haben.
+   Dezimalzahlen oder Fließkommazahlen werden nicht unterstützt. *)
+Numerisch    ::= [ "-" ] ZIFFER+
+
+(* Eine Zeichenkette ist eine beliebige Zeichenfolge,
+   die in doppelte Anführungszeichen (") eingeschlossen ist.
+   Sie kann Leerzeichen enthalten. *)
+Zeichenkette ::= '"' ( JEDES_ZEICHEN_AUSSER_ANFÜHRUNGSZEICHEN )* '"'
+
+````
+
+## Befehlstabelle
+
+### A. Gleisstrom & Status
 
 | Befehl | Alt | Parameter | Beschreibung | Beispiel |
 | :--- | :--- | :--- | :--- | :--- |
@@ -17,7 +58,7 @@ Die erweiterte Syntax folgt einem einheitlichen Format: `<BEFEHL param1="wert1" 
 | `HARDWARE_INFO` | `<i>` | (keine) | Fordert Hardware- und Board-Informationen an. | `<HARDWARE_INFO>` |
 | `REBOOT` | `<Z>` | (keine) | Startet die Kommandozentrale neu. | `<REBOOT>` |
 
-## B. Loksteuerung (Fahrregler)
+### B. Loksteuerung (Fahrregler)
 
 | Befehl | Alt | Parameter | Beschreibung | Beispiel |
 | :--- | :--- | :--- | :--- | :--- |
@@ -30,7 +71,7 @@ Die erweiterte Syntax folgt einem einheitlichen Format: `<BEFEHL param1="wert1" 
 | `RESET_EMERGENCY_STOP_ALL` | `<E>` | (keine) | Setzt den Nothalt für alle Loks zurück. | `<RESET_EMERGENCY_STOP_ALL>` |
 | `DELETE_LOCO` | `<R>` | `cab` | Löscht eine Lok aus dem Roster. | `<DELETE_LOCO cab="123">` |
 
-## C. CV-Programmierung
+### C. CV-Programmierung
 
 | Befehl | Alt | Parameter | Beschreibung | Beispiel |
 | :--- | :--- | :--- | :--- | :--- |
@@ -40,14 +81,14 @@ Die erweiterte Syntax folgt einem einheitlichen Format: `<BEFEHL param1="wert1" 
 | `PAGED_MODE_WRITE` | `<P>` | `cv`, `value` | Paged-Modus CV-Schreiben. | `<PAGED_MODE_WRITE cv="1" value="123">` |
 | `DIRECT_MODE_WRITE` | `<M>` | `address`, `value` | Direkt-Modus Register-Schreiben. | `<DIRECT_MODE_WRITE address="1024" value="123">` |
 
-## D. Zubehör
+### D. Zubehör
 
 | Befehl | Alt | Parameter | Beschreibung | Beispiel |
 | :--- | :--- | :--- | :--- | :--- |
 | `TURNOUT` | `<T>` | `id`, `state` (0=THROWN, 1=STRAIGHT) | Stellt den Zustand einer Weiche ein. | `<TURNOUT id="456" state="1">` |
 | `ACCESSORY` | `<Q>` | `id`, `state` (0=OFF, 1=ON) | Stellt den Zustand eines Zubehörs ein. | `<ACCESSORY id="789" state="1">` |
 
-## E. Sensoren & E/A
+### E. Sensoren & E/A
 
 | Befehl | Alt | Parameter | Beschreibung | Beispiel |
 | :--- | :--- | :--- | :--- | :--- |
@@ -55,14 +96,14 @@ Die erweiterte Syntax folgt einem einheitlichen Format: `<BEFEHL param1="wert1" 
 | `DEFINE_VPIN` | `<N>` | `vpin`, `type`, `state` (0/1) | Definiert einen VPIN. | `<DEFINE_VPIN vpin="1" type="INPUT" state="0">` |
 | `UNDEFINE_VPIN` | `<U>` | `vpin` | Macht einen VPIN undefiniert. | `<UNDEFINE_VPIN vpin="1">` |
 
-## F. JSON-Befehle
+### F. JSON-Befehle
 
 | Befehl | Alt | Parameter | Beschreibung | Beispiel |
 | :--- | :--- | :--- | :--- | :--- |
 | `JSON_QUERY` | `<J>` | `type` ("T", "A", "L", "S", "O", "R", "C") | Fordert Daten im JSON-Format an. | `<JSON_QUERY type="T">` |
 | `JSON_CONFIG` | `<=>` | `json` | Sendet einen Konfigurationsbefehl in JSON. | `<JSON_CONFIG json="{...}">` |
 
-## G. Diagnose & System
+### G. Diagnose & System
 
 | Befehl | Alt | Parameter | Beschreibung | Beispiel |
 | :--- | :--- | :--- | :--- | :--- |
@@ -71,7 +112,7 @@ Die erweiterte Syntax folgt einem einheitlichen Format: `<BEFEHL param1="wert1" 
 | `ECHO` | `<+>`/`<->` | `state` ("ON" oder "OFF") | Aktiviert oder deaktiviert den Echo-Modus. | `<ECHO state="ON">` |
 | `LIST_COMMANDS` | `<?>` | (keine) | Fordert eine Liste der verfügbaren Befehle an. | `<LIST_COMMANDS>` |
 
-## H. Vorgeschlagene neue Befehle
+### H. Vorgeschlagene neue Befehle
 
 Diese Befehle werden vorgeschlagen, um Ereignisse in der `IUnifiedModelTrainListener`-Schnittstelle abzudecken, die von der alten DCC-EX-Syntax nicht abgedeckt werden.
 
