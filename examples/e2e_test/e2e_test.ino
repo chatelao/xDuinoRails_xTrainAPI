@@ -178,6 +178,23 @@ void setup() {
     parser.parse(command);
     Serial.print("Test onLocoEventSync: ");
     Serial.println(listener.hasPassed() ? "PASSED" : "FAILED");
+
+    // Test 4: XML Round Trip
+    stream.clear();
+    ModelRail::XmlPrinter xmlPrinter(stream);
+    ModelRail::XmlParser xmlParser(listener);
+
+    listener.setExpected(VerifyingListener::ExpectedLocoSpeedChange{123, 50, ModelRail::Direction::REVERSE});
+
+    xmlPrinter.begin();
+    xmlPrinter.onLocoSpeedChange(loco, 50, ModelRail::Direction::REVERSE, 128);
+    xmlPrinter.end();
+
+    String xml = stream.readString();
+    xmlParser.parse(xml);
+
+    Serial.print("Test XML RoundTrip: ");
+    Serial.println(listener.hasPassed() ? "PASSED" : "FAILED");
 }
 
 void loop() {
