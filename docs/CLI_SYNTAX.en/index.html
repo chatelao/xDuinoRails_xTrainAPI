@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://chatelao.github.io/xDuinoRails_xTrainAPI/docs/CLI_SYNTAX.en/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>CLI Syntax - xTrain API</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CLI Syntax";
+        var mkdocs_page_input_path = "docs/CLI_SYNTAX.en.md";
+        var mkdocs_page_url = "/xDuinoRails_xTrainAPI/docs/CLI_SYNTAX.en/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> xTrain API
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">CLI Syntax</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#command-formats">Command Formats</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ebnf-syntax-definition">EBNF (Syntax Definition)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-table">Command Table</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#a-track-power-status">A. Track Power &amp; Status</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#b-loco-control-throttle">B. Loco Control (Throttle)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#c-cv-programming">C. CV Programming</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#d-accessories">D. Accessories</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#e-sensors-io">E. Sensors &amp; I/O</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#f-json-commands">F. JSON Commands</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#g-diagnostics-system">G. Diagnostics &amp; System</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#h-proposed-new-commands">H. Proposed New Commands</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../XTTRAIN_GLOSSARY.en/">Glossary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../DATA_DICTIONARY.en/">Data Dictionary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../OPEN_ISSUES.en/">Open Issues</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../API_LINKS.en/">API Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">xTrain API</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">CLI Syntax</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/chatelao/xDuinoRails_xTrainAPI/edit/master/docs/docs/CLI_SYNTAX.en.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cli-syntax">CLI Syntax</h1>
+<p>This document defines the command-line interface (CLI) syntax for the xDuinoRails_xTrainAPI. It covers both the legacy DCC-EX single-character commands and the more self-descriptive extended syntax.</p>
+<h2 id="command-formats">Command Formats</h2>
+<p>The <code>CmdLineParser</code> class is designed to accept both the legacy single-character commands and the extended commands at all times. The <code>CmdLinePrinter</code> class, however, can be configured to output either the legacy or extended format. This is controlled by the <code>USE_EXTENDED_CLI_SYNTAX</code> compile-time flag. By default, the extended syntax is used for output. To use the legacy syntax for output, set this flag to <code>0</code> during compilation.</p>
+<p>The extended syntax follows a consistent format: <code>&lt;COMMAND param1="value1" param2="value2" ...&gt;</code>.</p>
+<p>The legacy syntax uses single-character opcodes: <code>&lt;o p1 p2 ...&gt;</code>.</p>
+<h2 id="ebnf-syntax-definition">EBNF (Syntax Definition)</h2>
+<p>The Extended Backus-aur Form (EBNF) defines the "grammar" or structure of <em>every</em> message sent to or from the Command Station.</p>
+<p>```ebnf
+(<em> A message is a single command or response,
+   enclosed in angle brackets. </em>)
+message     ::= "&lt;" opcode ( " " parameter )* "&gt;"</p>
+<p>(<em> The opcode is ALWAYS a single character.
+   It is case-sensitive
+   (e.g., 'T' is a command, 't' is a response). </em>)
+opcode      ::= CHARACTER</p>
+<p>(<em> Parameters are separated by spaces. </em>)
+parameter   ::= keyword | numeric | string</p>
+<p>(<em> A keyword is a sequence of characters without spaces.
+   It consists of letters (a-z, A-Z), digits (0-9), and/
+   or the underscore (_).
+   Keywords are NOT case-sensitive. </em>)
+keyword     ::= ( LETTER | DIGIT | "_" )+</p>
+<p>(<em> A number is a sequence of digits.
+   It can optionally have a negative prefix (-).
+   Decimals or floating-point numbers are not supported. </em>)
+numeric     ::= [ "-" ] DIGIT+</p>
+<p>(<em> A string is any sequence of characters
+   enclosed in double-quotes (").
+   It may contain spaces. </em>)
+string      ::= '"' ( ANY_CHAR_EXCEPT_QUOTE )* '"'</p>
+<p>````</p>
+<h2 id="command-table">Command Table</h2>
+<h3 id="a-track-power-status">A. Track Power &amp; Status</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Legacy</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>POWER</code></td>
+<td style="text-align: left;"><code>&lt;1&gt;</code>/<code>&lt;0&gt;</code></td>
+<td style="text-align: left;"><code>state</code> ("ON" or "OFF")</td>
+<td style="text-align: left;">Turns track power on or off.</td>
+<td style="text-align: left;"><code>&lt;POWER state="ON"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SET_POWER</code></td>
+<td style="text-align: left;"><code>&lt;p&gt;</code></td>
+<td style="text-align: left;"><code>track</code> (0=MAIN, 1=PROG), <code>state</code> (0=OFF, 1=ON)</td>
+<td style="text-align: left;">Sets the power for a specific track.</td>
+<td style="text-align: left;"><code>&lt;SET_POWER track="1" state="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>STATUS</code></td>
+<td style="text-align: left;"><code>&lt;c&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Requests a detailed status report.</td>
+<td style="text-align: left;"><code>&lt;STATUS&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FULL_STATUS</code></td>
+<td style="text-align: left;"><code>&lt;S&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Requests a full status dump of all devices.</td>
+<td style="text-align: left;"><code>&lt;FULL_STATUS&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>HARDWARE_INFO</code></td>
+<td style="text-align: left;"><code>&lt;i&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Requests hardware and board information.</td>
+<td style="text-align: left;"><code>&lt;HARDWARE_INFO&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>REBOOT</code></td>
+<td style="text-align: left;"><code>&lt;Z&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Reboots the command station.</td>
+<td style="text-align: left;"><code>&lt;REBOOT&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-loco-control-throttle">B. Loco Control (Throttle)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Legacy</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>THROTTLE</code></td>
+<td style="text-align: left;"><code>&lt;t&gt;</code></td>
+<td style="text-align: left;"><code>cab</code>, <code>speed</code> (0-126), <code>direction</code> (0=REV, 1=FWD), <code>steps</code> (14, 28, 128)</td>
+<td style="text-align: left;">Main throttle command.</td>
+<td style="text-align: left;"><code>&lt;THROTTLE cab="123" speed="100" direction="1" steps="128"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SIMPLE_THROTTLE</code></td>
+<td style="text-align: left;"><code>&lt;s&gt;</code></td>
+<td style="text-align: left;"><code>cab</code>, <code>speed</code> (0-126), <code>direction</code> (0=REV, 1=FWD)</td>
+<td style="text-align: left;">Simple throttle command.</td>
+<td style="text-align: left;"><code>&lt;SIMPLE_THROTTLE cab="123" speed="100" direction="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FUNCTION</code></td>
+<td style="text-align: left;"><code>&lt;f&gt;</code>/<code>&lt;F&gt;</code></td>
+<td style="text-align: left;"><code>cab</code>, <code>function</code> (0-28), <code>state</code> (0=OFF, 1=ON)</td>
+<td style="text-align: left;">Toggles a locomotive function.</td>
+<td style="text-align: left;"><code>&lt;FUNCTION cab="123" function="1" state="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LIST_LOCOS</code></td>
+<td style="text-align: left;"><code>&lt;l&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Lists all locos in the roster.</td>
+<td style="text-align: left;"><code>&lt;LIST_LOCOS&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>EMERGENCY_STOP_LOCO</code></td>
+<td style="text-align: left;"><code>&lt;X&gt;</code></td>
+<td style="text-align: left;"><code>cab</code></td>
+<td style="text-align: left;">Emergency stop for a single loco.</td>
+<td style="text-align: left;"><code>&lt;EMERGENCY_STOP_LOCO cab="123"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>EMERGENCY_STOP_ALL</code></td>
+<td style="text-align: left;"><code>&lt;K&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Emergency stop for all locos.</td>
+<td style="text-align: left;"><code>&lt;EMERGENCY_STOP_ALL&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>RESET_EMERGENCY_STOP_ALL</code></td>
+<td style="text-align: left;"><code>&lt;E&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Resets emergency stop for all locos.</td>
+<td style="text-align: left;"><code>&lt;RESET_EMERGENCY_STOP_ALL&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DELETE_LOCO</code></td>
+<td style="text-align: left;"><code>&lt;R&gt;</code></td>
+<td style="text-align: left;"><code>cab</code></td>
+<td style="text-align: left;">Deletes a loco from the roster.</td>
+<td style="text-align: left;"><code>&lt;DELETE_LOCO cab="123"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-cv-programming">C. CV Programming</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Legacy</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>READ_CV</code></td>
+<td style="text-align: left;"><code>&lt;R&gt;</code></td>
+<td style="text-align: left;"><code>cv</code>, <code>track</code> (0=POM, 1=PROG)</td>
+<td style="text-align: left;">Reads a CV.</td>
+<td style="text-align: left;"><code>&lt;READ_CV cv="1" track="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>WRITE_CV_BYTE</code></td>
+<td style="text-align: left;"><code>&lt;W&gt;</code></td>
+<td style="text-align: left;"><code>cv</code>, <code>value</code>, <code>track</code> (0=POM, 1=PROG)</td>
+<td style="text-align: left;">Writes a byte to a CV.</td>
+<td style="text-align: left;"><code>&lt;WRITE_CV_BYTE cv="1" value="123" track="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>WRITE_CV_BIT</code></td>
+<td style="text-align: left;"><code>&lt;B&gt;</code></td>
+<td style="text-align: left;"><code>cv</code>, <code>bit</code>, <code>value</code>, <code>track</code> (0=POM, 1=PROG)</td>
+<td style="text-align: left;">Writes a bit to a CV.</td>
+<td style="text-align: left;"><code>&lt;WRITE_CV_BIT cv="1" bit="7" value="1" track="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PAGED_MODE_WRITE</code></td>
+<td style="text-align: left;"><code>&lt;P&gt;</code></td>
+<td style="text-align: left;"><code>cv</code>, <code>value</code></td>
+<td style="text-align: left;">Paged mode CV write.</td>
+<td style="text-align: left;"><code>&lt;PAGED_MODE_WRITE cv="1" value="123"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DIRECT_MODE_WRITE</code></td>
+<td style="text-align: left;"><code>&lt;M&gt;</code></td>
+<td style="text-align: left;"><code>address</code>, <code>value</code></td>
+<td style="text-align: left;">Direct mode register write.</td>
+<td style="text-align: left;"><code>&lt;DIRECT_MODE_WRITE address="1024" value="123"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-accessories">D. Accessories</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Legacy</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>TURNOUT</code></td>
+<td style="text-align: left;"><code>&lt;T&gt;</code></td>
+<td style="text-align: left;"><code>id</code>, <code>state</code> (0=THROWN, 1=STRAIGHT)</td>
+<td style="text-align: left;">Sets a turnout's state.</td>
+<td style="text-align: left;"><code>&lt;TURNOUT id="456" state="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ACCESSORY</code></td>
+<td style="text-align: left;"><code>&lt;Q&gt;</code></td>
+<td style="text-align: left;"><code>id</code>, <code>state</code> (0=OFF, 1=ON)</td>
+<td style="text-align: left;">Sets an accessory's state.</td>
+<td style="text-align: left;"><code>&lt;ACCESSORY id="789" state="1"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-sensors-io">E. Sensors &amp; I/O</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Legacy</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>VPIN</code></td>
+<td style="text-align: left;"><code>&lt;Y&gt;</code></td>
+<td style="text-align: left;"><code>id</code>, <code>state</code> (0/1)</td>
+<td style="text-align: left;">Manually sets a VPIN's state.</td>
+<td style="text-align: left;"><code>&lt;VPIN id="1" state="1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DEFINE_VPIN</code></td>
+<td style="text-align: left;"><code>&lt;N&gt;</code></td>
+<td style="text-align: left;"><code>vpin</code>, <code>type</code>, <code>state</code> (0/1)</td>
+<td style="text-align: left;">Defines a VPIN.</td>
+<td style="text-align: left;"><code>&lt;DEFINE_VPIN vpin="1" type="INPUT" state="0"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>UNDEFINE_VPIN</code></td>
+<td style="text-align: left;"><code>&lt;U&gt;</code></td>
+<td style="text-align: left;"><code>vpin</code></td>
+<td style="text-align: left;">Undefines a VPIN.</td>
+<td style="text-align: left;"><code>&lt;UNDEFINE_VPIN vpin="1"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="f-json-commands">F. JSON Commands</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Legacy</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>JSON_QUERY</code></td>
+<td style="text-align: left;"><code>&lt;J&gt;</code></td>
+<td style="text-align: left;"><code>type</code> ("T", "A", "L", "S", "O", "R", "C")</td>
+<td style="text-align: left;">Requests data in JSON format.</td>
+<td style="text-align: left;"><code>&lt;JSON_QUERY type="T"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>JSON_CONFIG</code></td>
+<td style="text-align: left;"><code>&lt;=&gt;</code></td>
+<td style="text-align: left;"><code>json</code></td>
+<td style="text-align: left;">Sends a configuration command in JSON.</td>
+<td style="text-align: left;"><code>&lt;JSON_CONFIG json="{...}"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="g-diagnostics-system">G. Diagnostics &amp; System</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Legacy</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>DIAGNOSTIC</code></td>
+<td style="text-align: left;"><code>&lt;D&gt;</code></td>
+<td style="text-align: left;"><code>command</code>, <code>params</code></td>
+<td style="text-align: left;">Performs various diagnostic actions.</td>
+<td style="text-align: left;"><code>&lt;DIAGNOSTIC command="RAM"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LIST_VARIABLES</code></td>
+<td style="text-align: left;"><code>&lt;V&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Lists all defined variables.</td>
+<td style="text-align: left;"><code>&lt;LIST_VARIABLES&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ECHO</code></td>
+<td style="text-align: left;"><code>&lt;+&gt;</code>/<code>&lt;-&gt;</code></td>
+<td style="text-align: left;"><code>state</code> ("ON" or "OFF")</td>
+<td style="text-align: left;">Activates or deactivates echo mode.</td>
+<td style="text-align: left;"><code>&lt;ECHO state="ON"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LIST_COMMANDS</code></td>
+<td style="text-align: left;"><code>&lt;?&gt;</code></td>
+<td style="text-align: left;">(none)</td>
+<td style="text-align: left;">Requests a list of available commands.</td>
+<td style="text-align: left;"><code>&lt;LIST_COMMANDS&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h-proposed-new-commands">H. Proposed New Commands</h3>
+<p>These commands are proposed to cover events in the <code>IUnifiedModelTrainListener</code> interface that are not covered by the legacy DCC-EX syntax.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Command</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>LOCO_FUNCTION_ANALOG</code></td>
+<td style="text-align: left;">Sets an analog value for a loco function.</td>
+<td style="text-align: left;"><code>cab</code>, <code>function</code>, <code>value</code></td>
+<td style="text-align: left;"><code>&lt;LOCO_FUNCTION_ANALOG cab="123" function="8" value="255"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DISPATCH</code></td>
+<td style="text-align: left;">Changes the dispatch state of a loco.</td>
+<td style="text-align: left;"><code>cab</code>, <code>state</code> ("ACQUIRED" or "RELEASED"), <code>owner</code></td>
+<td style="text-align: left;"><code>&lt;DISPATCH cab="123" state="ACQUIRED" owner="user1"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CONSIST_LINK</code></td>
+<td style="text-align: left;">Links two locos in a consist.</td>
+<td style="text-align: left;"><code>master</code>, <code>slave</code>, <code>type</code>, <code>inverted</code> (true/false)</td>
+<td style="text-align: left;"><code>&lt;CONSIST_LINK master="123" slave="456" type="ADVANCED" inverted="false"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CONSIST_UNLINK</code></td>
+<td style="text-align: left;">Unlinks a loco from a consist.</td>
+<td style="text-align: left;"><code>slave</code></td>
+<td style="text-align: left;"><code>&lt;CONSIST_UNLINK slave="456"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ACCESSORY_ANALOG</code></td>
+<td style="text-align: left;">Sets an analog value for an accessory.</td>
+<td style="text-align: left;"><code>address</code>, <code>value</code> (0.0-1.0)</td>
+<td style="text-align: left;"><code>&lt;ACCESSORY_ANALOG address="789" value="0.75"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ACCESSORY_ERROR</code></td>
+<td style="text-align: left;">Reports an accessory error.</td>
+<td style="text-align: left;"><code>address</code>, <code>errorId</code>, <code>errorMessage</code></td>
+<td style="text-align: left;"><code>&lt;ACCESSORY_ERROR address="789" errorId="1" errorMessage="Overload"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SENSOR</code></td>
+<td style="text-align: left;">Sets the state of a sensor.</td>
+<td style="text-align: left;"><code>id</code>, <code>state</code> ("ACTIVE" or "INACTIVE")</td>
+<td style="text-align: left;"><code>&lt;SENSOR id="101" state="ACTIVE"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FAST_CLOCK</code></td>
+<td style="text-align: left;">Updates the fast clock.</td>
+<td style="text-align: left;"><code>time</code> (Unix timestamp), <code>factor</code></td>
+<td style="text-align: left;"><code>&lt;FAST_CLOCK time="1678886400" factor="4.0"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>HARDWARE_NODE_ATTACHED</code></td>
+<td style="text-align: left;">Reports a new hardware node.</td>
+<td style="text-align: left;"><code>uid</code>, <code>productName</code>, <code>booster</code> (true/false)</td>
+<td style="text-align: left;"><code>&lt;HARDWARE_NODE_ATTACHED uid="abc-123" productName="xPressNet" booster="false"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>HARDWARE_NODE_LOST</code></td>
+<td style="text-align: left;">Reports a lost hardware node.</td>
+<td style="text-align: left;"><code>uid</code></td>
+<td style="text-align: left;"><code>&lt;HARDWARE_NODE_LOST uid="abc-123"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SYSTEM_MESSAGE</code></td>
+<td style="text-align: left;">Sends a system message.</td>
+<td style="text-align: left;"><code>source</code>, <code>message</code></td>
+<td style="text-align: left;"><code>&lt;SYSTEM_MESSAGE source="WebServer" message="User logged in"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LOCO_DETECTED_ON_BLOCK</code></td>
+<td style="text-align: left;">Reports a loco detected on a block.</td>
+<td style="text-align: left;"><code>sensorId</code>, <code>cab</code>, <code>orientation</code> ("FORWARD" or "REVERSE")</td>
+<td style="text-align: left;"><code>&lt;LOCO_DETECTED_ON_BLOCK sensorId="202" cab="123" orientation="FORWARD"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LOCO_TELEMETRY</code></td>
+<td style="text-align: left;">Reports telemetry data for a loco.</td>
+<td style="text-align: left;"><code>cab</code>, <code>type</code>, <code>value</code></td>
+<td style="text-align: left;"><code>&lt;LOCO_TELEMETRY cab="123" type="SPEED" value="50.5"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LOCO_EXTERNAL_STATE</code></td>
+<td style="text-align: left;">Changes the external state of a loco.</td>
+<td style="text-align: left;"><code>cab</code>, <code>state</code></td>
+<td style="text-align: left;"><code>&lt;LOCO_EXTERNAL_STATE cab="123" state="PARKED"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LOCO_RAILCOM_RAW</code></td>
+<td style="text-align: left;">Sends raw RailCom data.</td>
+<td style="text-align: left;"><code>cab</code>, <code>appId</code>, <code>data</code> (hex string)</td>
+<td style="text-align: left;"><code>&lt;LOCO_RAILCOM_RAW cab="123" appId="1" data="A0B1C2"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NEW_LOCO_DISCOVERED</code></td>
+<td style="text-align: left;">Reports a newly discovered loco.</td>
+<td style="text-align: left;"><code>cab</code>, <code>name</code>, <code>icon</code></td>
+<td style="text-align: left;"><code>&lt;NEW_LOCO_DISCOVERED cab="123" name="Big Boy" icon="steam_loco.png"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CV_READ_RESULT</code></td>
+<td style="text-align: left;">Reports the result of a CV read.</td>
+<td style="text-align: left;"><code>cab</code>, <code>cv</code>, <code>value</code>, <code>success</code> (true/false)</td>
+<td style="text-align: left;"><code>&lt;CV_READ_RESULT cab="123" cv="1" value="10" success="true"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SUSI_CONFIG_READ</code></td>
+<td style="text-align: left;">Reports the result of a SUSI config read.</td>
+<td style="text-align: left;"><code>cab</code>, <code>bank</code>, <code>index</code>, <code>value</code></td>
+<td style="text-align: left;"><code>&lt;SUSI_CONFIG_READ cab="123" bank="1" index="2" value="3"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>CONFIG_BLOCK_LOADED</code></td>
+<td style="text-align: left;">Reports that a config block has been loaded.</td>
+<td style="text-align: left;"><code>cab</code>, <code>domain</code>, <code>data</code> (hex string)</td>
+<td style="text-align: left;"><code>&lt;CONFIG_BLOCK_LOADED cab="123" domain="sound" data="DEADBEEF"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PROGRESS_UPDATE</code></td>
+<td style="text-align: left;">Reports the progress of an operation.</td>
+<td style="text-align: left;"><code>operation</code>, <code>percent</code></td>
+<td style="text-align: left;"><code>&lt;PROGRESS_UPDATE operation="Firmware Update" percent="75.5"&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>MECHANICAL_SYNC_EVENT</code></td>
+<td style="text-align: left;">Reports a mechanical sync event.</td>
+<td style="text-align: left;"><code>cab</code>, <code>type</code>, <code>value</code></td>
+<td style="text-align: left;"><code>&lt;MECHANICAL_SYNC_EVENT cab="123" type="CHUFF" value="1"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../XTTRAIN_GLOSSARY.en/" class="btn btn-neutral float-right" title="Glossary">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/chatelao/xDuinoRails_xTrainAPI" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../XTTRAIN_GLOSSARY.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

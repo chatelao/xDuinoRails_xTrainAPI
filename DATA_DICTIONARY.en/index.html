@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://chatelao.github.io/xDuinoRails_xTrainAPI/DATA_DICTIONARY.en/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Data Dictionary - xTrain API</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Data Dictionary";
+        var mkdocs_page_input_path = "DATA_DICTIONARY.en.md";
+        var mkdocs_page_url = "/xDuinoRails_xTrainAPI/DATA_DICTIONARY.en/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> xTrain API
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docs/CLI_SYNTAX.en/">CLI Syntax</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../XTTRAIN_GLOSSARY.en/">Glossary</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Data Dictionary</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../OPEN_ISSUES.en/">Open Issues</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docs/API_LINKS.en/">API Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">xTrain API</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Data Dictionary</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/chatelao/xDuinoRails_xTrainAPI/edit/master/docs/DATA_DICTIONARY.en.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Here is the complete <strong>Data Dictionary</strong> for the <code>UnifiedTrainAPI</code> as a GitHub-flavored Markdown table. You can copy this block directly into your <code>README.md</code> or wiki page.</p>
+<h1 id="xtrainapi-data-dictionary">xTrainAPI Data Dictionary</h1>
+<p>This table describes all fields, parameters, and data types used in the <code>UnifiedTrainAPI</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Field / Parameter</th>
+<th style="text-align: left;">Data Type</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Valid Range / Values</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Core</strong></td>
+<td style="text-align: left;"><code>Protocol</code></td>
+<td style="text-align: left;"><code>enum</code></td>
+<td style="text-align: left;">List of all supported protocols.</td>
+<td style="text-align: left;"><code>DCC</code>, <code>MM_I</code>, <code>MM_II</code>, <code>MFX</code>, <code>SELECTRIX</code>, <code>SX2</code>, <code>LOCONET</code>, <code>BIDIB</code>, <code>XPRESSNET</code>, <code>CAN_GENERIC</code></td>
+<td style="text-align: left;">Determines the driver to be used.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Core</strong></td>
+<td style="text-align: left;"><code>mobAddress</code></td>
+<td style="text-align: left;"><code>uint16_t</code></td>
+<td style="text-align: left;">The digital address of the decoder.</td>
+<td style="text-align: left;"><code>1</code> - <code>10239</code> (DCC)<br><code>1</code> - <code>255</code> (MM)<br><code>1</code> - <code>127</code> (SX)</td>
+<td style="text-align: left;">Is ignored if <code>mfxUid</code> is set.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Core</strong></td>
+<td style="text-align: left;"><code>mobMfxUid</code></td>
+<td style="text-align: left;"><code>uint32_t</code></td>
+<td style="text-align: left;">Unique Hardware ID (UID) for mfx/BiDiB.</td>
+<td style="text-align: left;"><code>0</code> = Inactive<br><code>&gt;0</code> = Valid UID</td>
+<td style="text-align: left;">Takes precedence over the address (routing priority).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Core</strong></td>
+<td style="text-align: left;"><code>direction</code></td>
+<td style="text-align: left;"><code>enum</code></td>
+<td style="text-align: left;">Logical travel direction.</td>
+<td style="text-align: left;"><code>REVERSE</code> (0)<br><code>FORWARD</code> (1)<br><code>UNKNOWN</code> (2)</td>
+<td style="text-align: left;">Used for commands and feedback.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobSpeedPercent</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Target speed of the locomotive.</td>
+<td style="text-align: left;"><code>0.0</code> (Stop) to <code>100.0</code> (Vmax)</td>
+<td style="text-align: left;">Must be converted by the driver into speed steps (14/28/128).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobSpeedSteps</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">Resolution of the speed steps for the command.</td>
+<td style="text-align: left;"><code>14</code>, <code>28</code>, <code>128</code></td>
+<td style="text-align: left;">Important for correct DCC packet generation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobFuncX</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">Index of the function key.</td>
+<td style="text-align: left;"><code>0</code> (Light)<br><code>1</code> - <code>32767</code> (Aux)</td>
+<td style="text-align: left;">RCN-227 defines up to F68, <code>int</code> is future-proof.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobFuncActive</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;">Status of a binary function (switch).</td>
+<td style="text-align: left;"><code>true</code> = ON<br><code>false</code> = OFF</td>
+<td style="text-align: left;">Standard for F-keys.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobFuncAnalog0to1</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Value of an analog function (pressure/intensity).</td>
+<td style="text-align: left;"><code>0.0</code> to <code>1.0</code></td>
+<td style="text-align: left;">For <code>onLocoFunctionAnalogValue</code> (e.g., WiThrottle).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobIsAcquired</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;">Status of slot management (dispatching).</td>
+<td style="text-align: left;"><code>true</code> = Acquired by controller<br><code>false</code> = Released</td>
+<td style="text-align: left;">Relevant for LocoNet/XpressNet arbitration.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobOwnerId</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">ID of the device controlling the locomotive.</td>
+<td style="text-align: left;">e.g., "Throttle #54", "JMRI"</td>
+<td style="text-align: left;">Debug info.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobConsist</code></td>
+<td style="text-align: left;"><code>enum</code></td>
+<td style="text-align: left;">Method of multiple traction.</td>
+<td style="text-align: left;"><code>ADVANCED_DCC</code> (CV19)<br><code>UNIVERSAL_HOST</code> (Software)<br><code>MU_LOCONET</code></td>
+<td style="text-align: left;">Determines the type of linking/addressing.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Traffic</strong></td>
+<td style="text-align: left;"><code>mobInverted</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;">Orientation in the consist.</td>
+<td style="text-align: left;"><code>true</code> = Slave runs in opposite direction<br><code>false</code> = Same direction</td>
+<td style="text-align: left;">For <code>onConsistLink</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Accessory</strong></td>
+<td style="text-align: left;"><code>statAddress</code></td>
+<td style="text-align: left;"><code>uint16_t</code></td>
+<td style="text-align: left;">Address of the accessory decoder.</td>
+<td style="text-align: left;">Protocol-dependent (usually <code>1</code>-<code>2048</code>)</td>
+<td style="text-align: left;">For turnouts and signals.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Accessory</strong></td>
+<td style="text-align: left;"><code>statIsThrown</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;">State of a standard turnout.</td>
+<td style="text-align: left;"><code>true</code> = Thrown/Red<br><code>false</code> = Straight/Green</td>
+<td style="text-align: left;">Basic function.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Accessory</strong></td>
+<td style="text-align: left;"><code>statIsFeedback</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;">Source of the event.</td>
+<td style="text-align: left;"><code>true</code> = Actual feedback (RailCom)<br><code>false</code> = Command echo</td>
+<td style="text-align: left;">Important for automation validation (safety).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Accessory</strong></td>
+<td style="text-align: left;"><code>statAspect</code></td>
+<td style="text-align: left;"><code>uint8_t</code></td>
+<td style="text-align: left;">Signal aspect.</td>
+<td style="text-align: left;"><code>0</code> to <code>255</code></td>
+<td style="text-align: left;">For complex signals (Hp0, Hp1, Sh1...).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Accessory</strong></td>
+<td style="text-align: left;"><code>statAnalog0to1</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Analog accessory value (servo/dimmer).</td>
+<td style="text-align: left;"><code>0.0</code> to <code>1.0</code></td>
+<td style="text-align: left;">Normalized float.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Accessory</strong></td>
+<td style="text-align: left;"><code>statError</code></td>
+<td style="text-align: left;"><code>uint8_t</code></td>
+<td style="text-align: left;">Diagnostic error code.</td>
+<td style="text-align: left;"><code>1</code>=OpenLoad<br><code>2</code>=Overload/Short<br><code>3</code>=Stall</td>
+<td style="text-align: left;">Hardware diagnostics (BiDiB/RailCom Port Status).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Accessory</strong></td>
+<td style="text-align: left;"><code>statErrorDesc</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Readable error description.</td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">For UI display.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>System</strong></td>
+<td style="text-align: left;"><code>PowerState</code></td>
+<td style="text-align: left;"><code>enum</code></td>
+<td style="text-align: left;">Global power status.</td>
+<td style="text-align: left;"><code>OFF</code> (0)<br><code>ON</code> (1)<br><code>EMERGENCY_STOP</code> (2)<br><code>SHORT_CIRCUIT</code> (3)</td>
+<td style="text-align: left;">Distinguishes between logical emergency stop and physical short circuit.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>System</strong></td>
+<td style="text-align: left;"><code>modelTimeUnix</code></td>
+<td style="text-align: left;"><code>int64_t</code></td>
+<td style="text-align: left;">Current model time (RCN-211).</td>
+<td style="text-align: left;">Unix Timestamp (seconds since 1970)</td>
+<td style="text-align: left;">Contains year, month, day, time for DCC Time/Date packets.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>System</strong></td>
+<td style="text-align: left;"><code>factor</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Time acceleration factor.</td>
+<td style="text-align: left;">e.g., <code>1.0</code> (Real-time), <code>4.0</code> (Fast)</td>
+<td style="text-align: left;">Sync for handheld controller clocks (LocoNet/XpressNet).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>System</strong></td>
+<td style="text-align: left;"><code>nodeUid</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Unique Hardware ID of a bus node.</td>
+<td style="text-align: left;">e.g., "05:00:AB:C1"</td>
+<td style="text-align: left;">Uniquely identifies boosters/detectors in the bus tree.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>System</strong></td>
+<td style="text-align: left;"><code>productName</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Product name of the hardware.</td>
+<td style="text-align: left;">e.g., "GBM16T", "Z21"</td>
+<td style="text-align: left;">UI display of the topology.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>System</strong></td>
+<td style="text-align: left;"><code>booster</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;">Power supply capability.</td>
+<td style="text-align: left;"><code>true</code> = Is a booster<br><code>false</code> = Logic only</td>
+<td style="text-align: left;">Filter for UI (Power Management).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>System</strong></td>
+<td style="text-align: left;"><code>message</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">System-wide text message.</td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Chat, logs, or LISSY text.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telemetry</strong></td>
+<td style="text-align: left;"><code>sensorId</code></td>
+<td style="text-align: left;"><code>uint32_t</code></td>
+<td style="text-align: left;">ID of a feedback sensor/block.</td>
+<td style="text-align: left;">System-dependent 32-bit ID</td>
+<td style="text-align: left;">Maps to S88 port, LNet sensor, BiDiB input.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telemetry</strong></td>
+<td style="text-align: left;"><code>DecoderOrientation</code></td>
+<td style="text-align: left;"><code>enum</code></td>
+<td style="text-align: left;">Locomotive orientation on the track (RCN-217).</td>
+<td style="text-align: left;"><code>NORMAL</code> (Chimney first)<br><code>INVERTED</code> (Tender first)<br><code>UNKNOWN</code></td>
+<td style="text-align: left;">Critical for shuttle train control and automation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telemetry</strong></td>
+<td style="text-align: left;"><code>ExternalState</code></td>
+<td style="text-align: left;"><code>enum</code></td>
+<td style="text-align: left;">External influence.</td>
+<td style="text-align: left;"><code>FREE_RUN</code><br><code>STOPPED_BY_ABC</code><br><code>STOPPED_BY_DC</code><br><code>STOPPED_BY_HLU</code></td>
+<td style="text-align: left;">Indicates if the track is braking the loco (despite throttle &gt; 0).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telemetry</strong></td>
+<td style="text-align: left;"><code>TelemetryType</code></td>
+<td style="text-align: left;"><code>enum</code></td>
+<td style="text-align: left;">Type of the measured value.</td>
+<td style="text-align: left;"><code>SPEED</code>, <code>LOAD</code>, <code>VOLTAGE</code>, <code>CURRENT</code>, <code>FUEL</code>, <code>TEMP</code>, <code>QOS</code>, <code>ODOMETER</code></td>
+<td style="text-align: left;">Defines the unit of <code>value</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telemetry</strong></td>
+<td style="text-align: left;"><code>value</code> (Telemetry)</td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">The measured value.</td>
+<td style="text-align: left;">KM/H, %, Volt, Ampere, °C</td>
+<td style="text-align: left;">Depends on <code>TelemetryType</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telemetry</strong></td>
+<td style="text-align: left;"><code>appId</code></td>
+<td style="text-align: left;"><code>uint8_t</code></td>
+<td style="text-align: left;">RailCom application ID.</td>
+<td style="text-align: left;"><code>0</code> to <code>255</code></td>
+<td style="text-align: left;">For proprietary raw data (manufacturer-specific).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Telemetry</strong></td>
+<td style="text-align: left;"><code>data</code> (Raw)</td>
+<td style="text-align: left;"><code>vector&lt;u8&gt;</code></td>
+<td style="text-align: left;">Raw data payload.</td>
+<td style="text-align: left;">Byte Array</td>
+<td style="text-align: left;">For RailCom Raw or Config Blocks.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Config</strong></td>
+<td style="text-align: left;"><code>cvNumber</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">Index of the configuration variable.</td>
+<td style="text-align: left;"><code>1</code> to <code>1024</code> (DCC)<br><code>1</code> to <code>65535</code> (Index)</td>
+<td style="text-align: left;">Address in the decoder's memory.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Config</strong></td>
+<td style="text-align: left;"><code>bankIndex</code></td>
+<td style="text-align: left;"><code>uint8_t</code></td>
+<td style="text-align: left;">Sound bank for SUSI.</td>
+<td style="text-align: left;"><code>0</code> to <code>3</code></td>
+<td style="text-align: left;">Usually mapped via CV 1024/897.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Config</strong></td>
+<td style="text-align: left;"><code>susiIndex</code></td>
+<td style="text-align: left;"><code>uint8_t</code></td>
+<td style="text-align: left;">Parameter within the SUSI bank.</td>
+<td style="text-align: left;"><code>0</code> to <code>255</code></td>
+<td style="text-align: left;">The "CV" in the SUSI module.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Config</strong></td>
+<td style="text-align: left;"><code>domain</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Type of the mass data block.</td>
+<td style="text-align: left;">"ICON", "FIRMWARE", "MFX_CONFIG"</td>
+<td style="text-align: left;">Context for <code>onConfigBlockLoaded</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Config</strong></td>
+<td style="text-align: left;"><code>operation</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Name of the ongoing process.</td>
+<td style="text-align: left;">e.g., "Reading CV List"</td>
+<td style="text-align: left;">For progress bars/UI.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Config</strong></td>
+<td style="text-align: left;"><code>percent</code></td>
+<td style="text-align: left;"><code>float</code></td>
+<td style="text-align: left;">Progress.</td>
+<td style="text-align: left;"><code>0.0</code> to <code>100.0</code></td>
+<td style="text-align: left;">UI feedback.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Config</strong></td>
+<td style="text-align: left;"><code>success</code></td>
+<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;">Result of an operation.</td>
+<td style="text-align: left;"><code>true</code> = ACK received<br><code>false</code> = Timeout/NACK</td>
+<td style="text-align: left;">Success check for CV reads.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../XTTRAIN_GLOSSARY.en/" class="btn btn-neutral float-left" title="Glossary"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../OPEN_ISSUES.en/" class="btn btn-neutral float-right" title="Open Issues">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/chatelao/xDuinoRails_xTrainAPI" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../XTTRAIN_GLOSSARY.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../OPEN_ISSUES.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
