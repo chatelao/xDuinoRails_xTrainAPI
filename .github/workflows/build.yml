@@ -104,7 +104,7 @@ jobs:
           files: release-assets/*
 
   build-and-deploy-docs:
-    # NOTE: This job correctly generates the Doxygen and Redocly/Swagger
+    # NOTE: This job correctly generates the MkDocs, Doxygen and Redocly/Swagger
     # documentation and deploys it to the 'gh-pages' branch. If the documentation
     # links in the README are broken, the repository's GitHub Pages settings
     # must be configured to serve from the 'gh-pages' branch.
@@ -124,8 +124,26 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install MkDocs
+        run: pip install mkdocs
+
       - name: Install Redocly CLI
         run: npm install -g @redocly/cli
+
+      - name: Prepare MkDocs source
+        run: |
+          mkdir -p site_source/docs
+          cp *.en.md site_source/
+          cp docs/*.en.md site_source/docs/
+          mv site_source/README.en.md site_source/index.md
+
+      - name: Build MkDocs site
+        run: mkdocs build
 
       - name: Create Doxygen output directory
         run: mkdir -p public/doxygen
@@ -143,23 +161,6 @@ jobs:
 
       - name: Copy webtool to public directory
         run: cp -r webtool public/
-
-      - name: Create index page
-        run: |
-          echo '<!DOCTYPE html>
-          <html>
-          <head>
-            <title>xTrain API Documentation</title>
-          </head>
-          <body>
-            <h1>xTrain API Documentation</h1>
-            <ul>
-              <li><a href="doxygen/index.html">Doxygen (C++ API)</a></li>
-              <li><a href="swagger/index.html">Redocly (REST API)</a></li>
-              <li><a href="webtool/index.html">Web Tool</a></li>
-            </ul>
-          </body>
-          </html>' > public/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
